@@ -1,7 +1,8 @@
-import 'package:beacon/widgets/media_queries.dart';
+import 'package:beacon/dashboard/home.dart';
+import 'package:beacon/widgets/auth.dart';
+import 'package:beacon/widgets/responsive_unit.dart';
 import 'package:beacon/widgets/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,7 +14,8 @@ class BeaconApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/onboarding' : (context) => const LandingPage(),
-        // TODO: add more routes
+        '/dashboard' : (context) => const Home(),
+        '/auth' : (context) => const AuthScreen()
       },
       theme: ThemeData(
         primaryColor: BeaconTheme().primaryBackgroundColour,
@@ -23,7 +25,7 @@ class BeaconApp extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if(snapshot.hasData) {
-              return Text('user exists');
+              return const Home();
             }
             else {
               return const LandingPage();
@@ -40,16 +42,16 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: BeaconTheme().primaryBackgroundColour,
+      backgroundColor: const BeaconTheme().primaryBackgroundColour,
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(42, 24, 0, 0),
+        padding: const EdgeInsets.fromLTRB(42, 36, 0, 0),
         child: Column(
           children: [
             Align(
               alignment: Alignment.centerLeft,
               child: SizedBox(
-                width: ResponsiveUnit().width(context, 370),
-                height: ResponsiveUnit().height(context, 150),
+                width: ResponsiveUnit().width(context, 320),
+                height: ResponsiveUnit().height(context, 160),
                 child: const Image(
                   image: AssetImage('assets/beacon_logo.png'),
                   fit: BoxFit.fill,
@@ -57,17 +59,19 @@ class LandingPage extends StatelessWidget {
               ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'generate your',
+                      textAlign: TextAlign.left,
                       style: GoogleFonts.montserrat(
                         fontSize: 42,
                         fontWeight: FontWeight.bold,
-                        color: BeaconTheme().secondaryFontColour,
+                        color: const BeaconTheme().secondaryFontColour,
                       ),
-                      textAlign: TextAlign.left,
                     ),
                     Text(
                       'college application list',
@@ -87,7 +91,7 @@ class LandingPage extends StatelessWidget {
                         style: GoogleFonts.montserrat(
                           fontSize: 16,
                           fontWeight: FontWeight.normal,
-                          color: BeaconTheme().secondaryFontColour,
+                          color: const BeaconTheme().secondaryFontColour,
                         )
                     ),
                     SizedBox(
@@ -97,14 +101,14 @@ class LandingPage extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            print("create personal pressed");
+                            Navigator.pushNamed(context, '/auth');
                           },
                           child: Container(
                             width: ResponsiveUnit().width(context, 360),
                             height: ResponsiveUnit().width(context, 120),
                             decoration: BoxDecoration(
-                              color: BeaconTheme().primaryFontColour,
-                              borderRadius: BorderRadius.circular(50)
+                                color: BeaconTheme().primaryFontColour,
+                                borderRadius: BorderRadius.circular(50)
                             ),
                             child: Center(
                               child: Text(
@@ -124,7 +128,7 @@ class LandingPage extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            print("create personal pressed");
+                            print("create random pressed");
                           },
                           child: Container(
                             width: ResponsiveUnit().width(context, 360),
@@ -132,7 +136,7 @@ class LandingPage extends StatelessWidget {
                             decoration: BoxDecoration(
                                 color: BeaconTheme().primaryBackgroundColour,
                                 borderRadius: BorderRadius.circular(50),
-                              border: Border.all(color: BeaconTheme().primaryFontColour, width: 3)
+                                border: Border.all(color: BeaconTheme().primaryFontColour, width: 3)
                             ),
                             child: Center(
                               child: Text(
@@ -150,7 +154,7 @@ class LandingPage extends StatelessWidget {
                       ],
                     )
                   ],
-                ), // all text
+                ),
                 SizedBox(
                   width: ResponsiveUnit().width(context, 710),
                   height: ResponsiveUnit().height(context, 580),
