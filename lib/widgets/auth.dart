@@ -14,8 +14,8 @@ class AuthScreen extends StatelessWidget {
       body: Center(
         child: InkWell(
           onTap: () {
-            Auth().handleSignIn().catchError((error) {
-              print(error);
+            Auth().handleSignIn().then((UserCredential userCred) {
+              Navigator.pushNamed(context, '/onboarding');
             });
           },
           child: Container(

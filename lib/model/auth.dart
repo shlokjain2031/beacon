@@ -16,19 +16,22 @@ class Auth {
   );
 
   Future<UserCredential> handleSignIn() async {
-    GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signInSilently();
-    GoogleSignInAuthentication? googleAuth = await googleSignInAccount?.authentication;
+    // GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signInSilently();
+    // GoogleSignInAuthentication? googleAuth = await googleSignInAccount?.authentication;
+    //
+    // // Create a new credential
+    // final credential = GoogleAuthProvider.credential(
+    //   accessToken: googleAuth?.accessToken,
+    //   idToken: googleAuth?.idToken,
+    // );
+    //
+    // print(credential.idToken);
+    //
+    // // Once signed in, return the UserCredential
+    // return await FirebaseAuth.instance.signInWithCredential(credential);
 
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    print(credential.idToken);
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
+    return await FirebaseAuth.instance.signInWithPopup(googleAuthProvider);
   }
 
 
