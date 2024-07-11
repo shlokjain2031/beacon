@@ -17,7 +17,7 @@ class BeaconApp extends StatelessWidget {
         '/trynow' : (context) => const LandingPage(),
         '/dashboard' : (context) => const Home(),
         '/onboarding' : (context) => const Onboarding(),
-        // '/create-my-college-list' : (context) => CreateCollegeList(),
+        '/onboarding/create-my-college-list' : (context) => CreateCollegeList(),
       },
       home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
