@@ -15,7 +15,7 @@ class _HomeWidgetState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: BeaconTheme().primaryBackgroundColour,
+      backgroundColor: BeaconTheme().secondaryColour,
       body: const Text(
         'home',
         style: TextStyle(
