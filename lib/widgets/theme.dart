@@ -5,11 +5,11 @@ import 'package:flutter/cupertino.dart';
 class BeaconTheme {
   const BeaconTheme();
 
-  get primaryFontColour => const Color(0xff0E0E61);
+  get primaryColour => const Color(0xff0E0E61);
 
-  get primaryBackgroundColour => const Color(0xffFFE8CD);
+  get secondaryColour => const Color(0xffFFE8CD);
 
-  get secondaryFontColour => const Color(0xff877B97);
+  get saturatedPrimaryColour => const Color(0xff877B97);
 
   get shadowColour => const Color(0xffDBC7BD);
 

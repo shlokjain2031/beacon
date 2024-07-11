@@ -41,6 +41,7 @@ dependencies:
   google_sign_in_web: ^0.12.4+1
   google_sign_in: ^6.2.1
   google_generative_ai: ^0.4.3
+  supabase_flutter: ^2.5.7
 
 dev_dependencies:
   flutter_test:
@@ -56,3 +57,4 @@ flutter:
      - assets/beacon_logo.png
      - assets/character_illustration_girl.png
      - assets/character_illustration_boy.png
+     - assets/beacon_long_logo.png

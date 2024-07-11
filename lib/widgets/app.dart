@@ -1,5 +1,5 @@
 import 'package:beacon/dashboard/home.dart';
-import 'package:beacon/widgets/auth.dart';
+import 'package:beacon/model/auth.dart';
 import 'package:beacon/widgets/onboarding.dart';
 import 'package:beacon/widgets/responsive_unit.dart';
 import 'package:beacon/widgets/theme.dart';
@@ -16,13 +16,9 @@ class BeaconApp extends StatelessWidget {
       routes: {
         '/trynow' : (context) => const LandingPage(),
         '/dashboard' : (context) => const Home(),
-        '/auth' : (context) => const AuthScreen(),
-        '/onboarding' : (context) => const Onboarding()
+        '/onboarding' : (context) => const Onboarding(),
+        // '/create-my-college-list' : (context) => CreateCollegeList(),
       },
-      theme: ThemeData(
-        primaryColor: BeaconTheme().primaryBackgroundColour,
-
-      ),
       home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
@@ -44,7 +40,7 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const BeaconTheme().primaryBackgroundColour,
+      backgroundColor: const BeaconTheme().secondaryColour,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
         child: Column(
@@ -62,17 +58,15 @@ class LandingPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-
+                    // todo: link to auth then if dashboard exists, take to dashboard
                   },
                   child: Container(
                       width: ResponsiveUnit().width(context, 175),
                       height: ResponsiveUnit().height(context, 68),
                       decoration: BoxDecoration(
-                          color: const BeaconTheme().primaryFontColour,
+                          color: const BeaconTheme().primaryColour,
                           borderRadius: BorderRadius.circular(25),
-                          boxShadow: [
-                            const BeaconTheme().boxShadow
-                          ]
+                          boxShadow: [ const BeaconTheme().boxShadow ]
                       ),
                       child: Center(
                         child: Text(
@@ -80,7 +74,7 @@ class LandingPage extends StatelessWidget {
                             style: GoogleFonts.montserrat(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: const BeaconTheme().primaryBackgroundColour,
+                              color: const BeaconTheme().secondaryColour,
                             )
                         ),
                       )
@@ -102,20 +96,20 @@ class LandingPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'generate your',
+                      'Generate your',
                       textAlign: TextAlign.left,
                       style: GoogleFonts.montserrat(
                         fontSize: 42,
                         fontWeight: FontWeight.bold,
-                        color: const BeaconTheme().secondaryFontColour,
+                        color: const BeaconTheme().saturatedPrimaryColour,
                       ),
                     ),
                     Text(
-                      'college application list',
+                      'Safety - Reach List',
                       style: GoogleFonts.montserrat(
                           fontSize: 42,
                           fontWeight: FontWeight.bold,
-                          color: BeaconTheme().primaryFontColour,
+                          color: const BeaconTheme().primaryColour,
                           decoration: TextDecoration.underline
                       ),
                       textAlign: TextAlign.left,
@@ -124,11 +118,11 @@ class LandingPage extends StatelessWidget {
                       height: ResponsiveUnit().height(context, 36),
                     ),
                     Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nDonec convallis tempor',
+                        'Light the way to your goals',
                         style: GoogleFonts.montserrat(
                           fontSize: 16,
                           fontWeight: FontWeight.normal,
-                          color: const BeaconTheme().secondaryFontColour,
+                          color: const BeaconTheme().saturatedPrimaryColour,
                         ),
                       textAlign: TextAlign.center,
                     ),
@@ -139,23 +133,23 @@ class LandingPage extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.pushNamed(context, '/auth');
+                            _showAuthBottomSheet(context);
                           },
                           child: Container(
                             width: ResponsiveUnit().width(context, 360),
                             height: ResponsiveUnit().width(context, 120),
                             decoration: BoxDecoration(
-                                color: const BeaconTheme().primaryFontColour,
+                                color: const BeaconTheme().primaryColour,
                                 borderRadius: BorderRadius.circular(50),
                                 boxShadow: [const BeaconTheme().boxShadow]
                             ),
                             child: Center(
                               child: Text(
-                                'create my\npersonal college list',
+                                'Create my\nPersonal College List',
                                 style: GoogleFonts.montserrat(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  color: const BeaconTheme().primaryBackgroundColour,
+                                  color: const BeaconTheme().secondaryColour,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -173,17 +167,17 @@ class LandingPage extends StatelessWidget {
                             width: ResponsiveUnit().width(context, 360),
                             height: ResponsiveUnit().width(context, 120),
                             decoration: BoxDecoration(
-                                color: BeaconTheme().primaryBackgroundColour,
+                                color: const BeaconTheme().secondaryColour,
                                 borderRadius: BorderRadius.circular(50),
-                                border: Border.all(color: BeaconTheme().primaryFontColour, width: 3)
+                                border: Border.all(color: const BeaconTheme().primaryColour, width: 3)
                             ),
                             child: Center(
                               child: Text(
-                                'visit a\ndummy profile',
+                                'Visit a\nDummy Profile',
                                 style: GoogleFonts.montserrat(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  color: const BeaconTheme().primaryFontColour,
+                                  color: const BeaconTheme().primaryColour,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -207,7 +201,7 @@ class LandingPage extends StatelessWidget {
               height: ResponsiveUnit().height(context, 32),
             ),
             Divider(
-              color: const BeaconTheme().secondaryFontColour,
+              color: const BeaconTheme().saturatedPrimaryColour,
               thickness: 2,
             ),
           ],
@@ -216,4 +210,78 @@ class LandingPage extends StatelessWidget {
     );
   }
 
+}
+
+Future<void> _showAuthBottomSheet(BuildContext context) {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: true, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(
+          'authenticate',
+          style: GoogleFonts.montserrat(
+            color: const BeaconTheme().secondaryColour,
+            fontWeight: FontWeight.bold,
+            fontSize: 24
+          ),
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor: const BeaconTheme().primaryColour,
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: <Widget>[
+              Text(
+                'we use your name & age from your google account',
+                style: GoogleFonts.montserrat(
+                    color: const BeaconTheme().secondaryColour,
+                    fontWeight: FontWeight.normal,
+                    fontSize: 10
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          Center(
+            child: InkWell(
+              onTap: () {
+                // Auth().handleSignIn().then((userCred) {
+                //   Navigator.pop(context);
+                //
+                //   // TODO: cross check if user exists or no and then send to onboarding or home
+                //   Navigator.pushNamed(context, '/onboarding');
+                // }).catchError((e) {
+                //   assert(e);
+                // });
+
+                Navigator.pushNamed(context, '/onboarding');
+
+              },
+              child: Container(
+                  width: ResponsiveUnit().width(context, 400),
+                  height: ResponsiveUnit().height(context, 100),
+                  decoration: BoxDecoration(
+                      color: const BeaconTheme().secondaryColour,
+                      borderRadius: BorderRadius.circular(15)
+                  ),
+                  child: Center(
+                    child: Text(
+                      'sign in using google',
+                      style: GoogleFonts.montserrat(
+                          color: const BeaconTheme().primaryColour,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  )
+              ),
+            ),
+          ),
+        ],
+      );
+    },
+  );
 }
