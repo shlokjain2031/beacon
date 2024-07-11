@@ -42,6 +42,7 @@ dependencies:
   google_sign_in: ^6.2.1
   google_generative_ai: ^0.4.3
   supabase_flutter: ^2.5.7
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -58,3 +59,4 @@ flutter:
      - assets/character_illustration_girl.png
      - assets/character_illustration_boy.png
      - assets/beacon_long_logo.png
+     - SUPABASE_API_KEY.env

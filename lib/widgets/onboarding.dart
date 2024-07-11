@@ -81,35 +81,70 @@ class Onboarding extends StatelessWidget {
 
 }
 
-class CreateCollegeList extends StatelessWidget {
-  CreateCollegeList({super.key, portfolio, pageNumber});
+Color _primaryColour = const BeaconTheme().primaryColour;
+Color _secondaryColour = const BeaconTheme().secondaryColour;
+BoxShadow _boxShadow = const BeaconTheme().boxShadow;
+// todo: refactor this throughout the repo
 
+class CreateCollegeList extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _CreateCollegeListState();
+}
+
+class _CreateCollegeListState extends State<CreateCollegeList> {
   @override
   Widget build(BuildContext context) {
 
-    int pageNumber = ModalRoute.of(context)?.settings.arguments as int;
+    // int pageNumber = ModalRoute.of(context)?.settings.arguments as int;
+    int pageNumber = 1;
+    bool allQuestionsAnswered = false;
 
     return Scaffold(
-      backgroundColor: const BeaconTheme().secondaryColour,
+      backgroundColor: _secondaryColour,
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 24, 0, 0),
+        padding: const EdgeInsets.fromLTRB(64, 24, 64, 0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: Text(
-                'creating you college list',
-                style: GoogleFonts.montserrat(
-                    color: const BeaconTheme().primaryColour,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 36
-                ),
-                textAlign: TextAlign.center,
-              )
+                child: Text(
+                  'creating you college list',
+                  style: GoogleFonts.montserrat(
+                      color: _primaryColour,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 36
+                  ),
+                  textAlign: TextAlign.center,
+                )
             ),
-            _progressOfOnboarding(pageNumber, context)
-            // _questionDecider(pageNumber, portfolio)
+            SizedBox(
+              height: ResponsiveUnit().height(context, 48),
+            ),
+            _progressOfOnboarding(pageNumber, context),
+            SizedBox(
+              height: ResponsiveUnit().height(context, 600),
+              // child: _questionDecider(pageNumber, portfolio),
+            ),
+            Container(
+                width: ResponsiveUnit().width(context, 220),
+                height: ResponsiveUnit().height(context, 85),
+                decoration: BoxDecoration(
+                    color: allQuestionsAnswered ? _primaryColour : _secondaryColour,
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: allQuestionsAnswered ? [ _boxShadow ] : null,
+                    border: Border.all(color: _primaryColour, width: 3)
+                ),
+                child: Center(
+                  child: Text(
+                    'next!',
+                    style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.bold,
+                      color: allQuestionsAnswered ? _secondaryColour : _primaryColour,
+                      fontSize: 20,
+                    ),
+                  ),
+                )
+            )
           ],
         ),
       ),
@@ -122,7 +157,6 @@ const _totalNumberOfPages = 5;
 Widget _progressOfOnboarding(int pageNumber, BuildContext context) {
   return Center(
     child: SizedBox(
-      width: ResponsiveUnit().width(context, 1260),
       height: ResponsiveUnit().height(context, 20),
       child: LinearProgressIndicator(
         borderRadius: BorderRadius.circular(10),
@@ -130,7 +164,7 @@ Widget _progressOfOnboarding(int pageNumber, BuildContext context) {
         backgroundColor: const BeaconTheme().saturatedPrimaryColour,
         // valueColor: const BeaconTheme().primaryColour,
       ),
-    ),
+    )
   );
 }
 

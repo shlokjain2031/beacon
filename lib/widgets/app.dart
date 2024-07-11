@@ -23,7 +23,8 @@ class BeaconApp extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if(snapshot.hasData) {
-              return const Home();
+              // return const Home();
+              return const Onboarding();
             }
             else {
               return const LandingPage();
@@ -247,17 +248,16 @@ Future<void> _showAuthBottomSheet(BuildContext context) {
           Center(
             child: InkWell(
               onTap: () {
-                // Auth().handleSignIn().then((userCred) {
-                //   Navigator.pop(context);
-                //
-                //   // TODO: cross check if user exists or no and then send to onboarding or home
-                //   Navigator.pushNamed(context, '/onboarding');
-                // }).catchError((e) {
-                //   assert(e);
-                // });
+                // todo: solve issue of dialog box disappearing
+                Navigator.pop(context);
 
-                Navigator.pushNamed(context, '/onboarding');
+                // todo: check if user exists and then decide if where to navigate
+                Auth().insertUserIntoDb().then((_) {
 
+                  Navigator.pushNamed(context, '/onboarding');
+                }).catchError((e) {
+                  assert(e);
+                });
               },
               child: Container(
                   width: ResponsiveUnit().width(context, 400),
