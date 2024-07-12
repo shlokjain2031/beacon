@@ -21,4 +21,4 @@ void main() async {
   runApp(const BeaconApp());
 }
 
-// flutter run -d chrome --web-hostname localhost --web-port 7357
+/// flutter run -d chrome --web-hostname localhost --web-port 7357

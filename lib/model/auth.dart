@@ -25,9 +25,10 @@ class Auth {
     String? id = userCred.user?.uid;
     String? name = userCred.user?.displayName;
 
-    print("id: " + id!);
-    print("name: "+ name!);
-
     return await supabase.from('users').insert({ 'user_id' : id, 'name' : name });
+  }
+
+  String? getUserId() {
+    return FirebaseAuth.instance.currentUser?.uid;
   }
 }
