@@ -15,7 +15,7 @@ class _HomeWidgetState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: BeaconTheme().secondaryColour,
+      backgroundColor: _secondaryColour,
       body: const Text(
         'home',
         style: TextStyle(
@@ -25,3 +25,8 @@ class _HomeWidgetState extends State<Home> {
     );
   }
 }
+
+Color _primaryColour = const BeaconTheme().primaryColour;
+Color _secondaryColour = const BeaconTheme().secondaryColour;
+Color _saturatedPrimaryColour = const BeaconTheme().saturatedPrimaryColour;
+BoxShadow _boxShadow = const BeaconTheme().boxShadow;

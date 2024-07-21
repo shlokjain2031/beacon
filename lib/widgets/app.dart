@@ -20,7 +20,8 @@ class BeaconApp extends StatelessWidget {
         '/onboarding/board-of-education' : (context) => const BoardOfEd(),
         '/onboarding/grade' : (context) => const Grade(),
         '/onboarding/comp-exam' : (context) => const CompExam(),
-        '/onboarding/english-exam' : (context) => const EnglishExam()
+        '/onboarding/essay' : (context) => const Essay(),
+        '/onboarding/extra-curricular' : (context) => const ExtraCurricular()
       },
       home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
@@ -137,7 +138,7 @@ class LandingPage extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            _showAuthBottomSheet(context);
+                            _showAuthDialog(context);
                           },
                           child: Container(
                             width: ResponsiveUnit().width(context, 360),
@@ -216,7 +217,7 @@ class LandingPage extends StatelessWidget {
 
 }
 
-Future<void> _showAuthBottomSheet(BuildContext context) {
+Future<void> _showAuthDialog(BuildContext context) {
   return showDialog<void>(
     context: context,
     barrierDismissible: true, // user must tap button!

@@ -1,3 +1,5 @@
+import 'dart:core';
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:beacon/api/portfolio.dart';
@@ -5,8 +7,10 @@ import 'package:beacon/model/auth.dart';
 import 'package:beacon/model/portfolio.dart';
 import 'package:beacon/widgets/responsive_unit.dart';
 import 'package:beacon/widgets/theme.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -32,7 +36,7 @@ class Onboarding extends StatelessWidget {
                 ),
               ),
               Text(
-                'creating your college list',
+                'Creating Your College List',
                 style: GoogleFonts.montserrat(
                     decoration: TextDecoration.underline,
                     decorationColor: _primaryColour,
@@ -42,7 +46,7 @@ class Onboarding extends StatelessWidget {
                 ),
               ),
               Text(
-                'we will ask you five questions\nto build you a basic safety - reach list',
+                'We will ask you five questions\nto build you a basic safety - reach list',
                 style: GoogleFonts.montserrat(
                     fontSize: 20,
                     fontWeight: FontWeight.normal,
@@ -64,7 +68,7 @@ class Onboarding extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      'create!',
+                      'Create!',
                       style: GoogleFonts.montserrat(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -81,11 +85,11 @@ class Onboarding extends StatelessWidget {
       ),
     );
   }
-
 }
 
 Color _primaryColour = const BeaconTheme().primaryColour;
 Color _secondaryColour = const BeaconTheme().secondaryColour;
+Color _saturatedPrimaryColour = const BeaconTheme().saturatedPrimaryColour;
 BoxShadow _boxShadow = const BeaconTheme().boxShadow;
 // todo: refactor this throughout the repo
 
@@ -132,7 +136,7 @@ class _BoardOfEdState extends State<BoardOfEd> {
                   child: LinearProgressIndicator(
                     borderRadius: BorderRadius.circular(10),
                     value: _boardOfEdPageNum/_totalNumberOfPages,
-                    backgroundColor: const BeaconTheme().saturatedPrimaryColour,
+                    backgroundColor: _saturatedPrimaryColour,
                   ),
                 )
             ),
@@ -140,263 +144,268 @@ class _BoardOfEdState extends State<BoardOfEd> {
               height: ResponsiveUnit().height(context, 64),
             ),
 
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'board of education in 10th',
-                  style: GoogleFonts.montserrat(
-                      decoration: TextDecoration.underline,
-                      decorationColor: _primaryColour,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 36,
-                      color: _primaryColour
+            SizedBox(
+              width: ResponsiveUnit().width(context, 1260),
+              height: ResponsiveUnit().height(context, 540),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Board of Education in 10th',
+                    style: GoogleFonts.montserrat(
+                        decoration: TextDecoration.underline,
+                        decorationColor: _primaryColour,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 36,
+                        color: _primaryColour
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: ResponsiveUnit().height(context, 48),
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          boardOfEdInTenth = "cbse/icse";
-                        });
-                      },
-                      child: Container(
-                        width: ResponsiveUnit().width(context, 200),
-                        height: ResponsiveUnit().height(context, 70),
-                        decoration: BoxDecoration(
-                            color: boardOfEdInTenth == "cbse/icse" ? _primaryColour : _secondaryColour,
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
-                        child: Center(
-                          child: Text(
-                            'cbse/icse',
-                            style: GoogleFonts.montserrat(
-                                color: boardOfEdInTenth == "cbse/icse" ? _secondaryColour : _primaryColour,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 48),
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            boardOfEdInTenth = "cbse/icse";
+                          });
+                        },
+                        child: Container(
+                          width: ResponsiveUnit().width(context, 200),
+                          height: ResponsiveUnit().height(context, 70),
+                          decoration: BoxDecoration(
+                              color: boardOfEdInTenth == "cbse/icse" ? _primaryColour : _secondaryColour,
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(color: _primaryColour, width: 3)
+                          ),
+                          child: Center(
+                            child: Text(
+                              'cbse/icse',
+                              style: GoogleFonts.montserrat(
+                                  color: boardOfEdInTenth == "cbse/icse" ? _secondaryColour : _primaryColour,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          boardOfEdInTenth = "state";
-                        });
-                      },
-                      child: Container(
-                        width: ResponsiveUnit().width(context, 200),
-                        height: ResponsiveUnit().height(context, 70),
-                        decoration: BoxDecoration(
-                            color: boardOfEdInTenth == "state" ? _primaryColour : _secondaryColour,
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
-                        child: Center(
-                          child: Text(
-                            'state',
-                            style: GoogleFonts.montserrat(
-                                color: boardOfEdInTenth == "state" ? _secondaryColour : _primaryColour,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            boardOfEdInTenth = "state";
+                          });
+                        },
+                        child: Container(
+                          width: ResponsiveUnit().width(context, 200),
+                          height: ResponsiveUnit().height(context, 70),
+                          decoration: BoxDecoration(
+                              color: boardOfEdInTenth == "state" ? _primaryColour : _secondaryColour,
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(color: _primaryColour, width: 3)
+                          ),
+                          child: Center(
+                            child: Text(
+                              'state',
+                              style: GoogleFonts.montserrat(
+                                  color: boardOfEdInTenth == "state" ? _secondaryColour : _primaryColour,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          boardOfEdInTenth = "open schooling";
-                        });
-                      },
-                      child: Container(
-                        width: ResponsiveUnit().width(context, 200),
-                        height: ResponsiveUnit().height(context, 70),
-                        decoration: BoxDecoration(
-                            color: boardOfEdInTenth == "open schooling" ? _primaryColour : _secondaryColour,
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
-                        child: Center(
-                          child: Text(
-                            'open schooling',
-                            style: GoogleFonts.montserrat(
-                                color: boardOfEdInTenth == "open schooling" ? _secondaryColour : _primaryColour,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            boardOfEdInTenth = "open schooling";
+                          });
+                        },
+                        child: Container(
+                          width: ResponsiveUnit().width(context, 200),
+                          height: ResponsiveUnit().height(context, 70),
+                          decoration: BoxDecoration(
+                              color: boardOfEdInTenth == "open schooling" ? _primaryColour : _secondaryColour,
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(color: _primaryColour, width: 3)
+                          ),
+                          child: Center(
+                            child: Text(
+                              'open schooling',
+                              style: GoogleFonts.montserrat(
+                                  color: boardOfEdInTenth == "open schooling" ? _secondaryColour : _primaryColour,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          boardOfEdInTenth = "igcse";
-                        });
-                      },
-                      child: Container(
-                        width: ResponsiveUnit().width(context, 200),
-                        height: ResponsiveUnit().height(context, 70),
-                        decoration: BoxDecoration(
-                            color: boardOfEdInTenth == "igcse" ? _primaryColour : _secondaryColour,
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
-                        child: Center(
-                          child: Text(
-                            'igcse',
-                            style: GoogleFonts.montserrat(
-                                color: boardOfEdInTenth == "igcse" ? _secondaryColour : _primaryColour,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            boardOfEdInTenth = "IGCSE";
+                          });
+                        },
+                        child: Container(
+                          width: ResponsiveUnit().width(context, 200),
+                          height: ResponsiveUnit().height(context, 70),
+                          decoration: BoxDecoration(
+                              color: boardOfEdInTenth == "IGCSE" ? _primaryColour : _secondaryColour,
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(color: _primaryColour, width: 3)
+                          ),
+                          child: Center(
+                            child: Text(
+                              'IGCSE',
+                              style: GoogleFonts.montserrat(
+                                  color: boardOfEdInTenth == "IGCSE" ? _secondaryColour : _primaryColour,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: ResponsiveUnit().height(context, 100),
-                ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 100),
+                  ),
 
-                Text(
-                  'board of education in 12th',
-                  style: GoogleFonts.montserrat(
-                      decoration: TextDecoration.underline,
-                      decorationColor: _primaryColour,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 36,
-                      color: _primaryColour
+                  Text(
+                    'Board of Education in 12th',
+                    style: GoogleFonts.montserrat(
+                        decoration: TextDecoration.underline,
+                        decorationColor: _primaryColour,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 36,
+                        color: _primaryColour
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: ResponsiveUnit().height(context, 48),
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          boardOfEdInTwelfth = "cbse/icse";
-                        });
-                      },
-                      child: Container(
-                        width: ResponsiveUnit().width(context, 200),
-                        height: ResponsiveUnit().height(context, 70),
-                        decoration: BoxDecoration(
-                            color: boardOfEdInTwelfth == "cbse/icse" ? _primaryColour : _secondaryColour,
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
-                        child: Center(
-                          child: Text(
-                            'cbse/icse',
-                            style: GoogleFonts.montserrat(
-                                color: boardOfEdInTwelfth == "cbse/icse" ? _secondaryColour : _primaryColour,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 48),
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            boardOfEdInTwelfth = "cbse/icse";
+                          });
+                        },
+                        child: Container(
+                          width: ResponsiveUnit().width(context, 200),
+                          height: ResponsiveUnit().height(context, 70),
+                          decoration: BoxDecoration(
+                              color: boardOfEdInTwelfth == "cbse/icse" ? _primaryColour : _secondaryColour,
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(color: _primaryColour, width: 3)
+                          ),
+                          child: Center(
+                            child: Text(
+                              'cbse/icse',
+                              style: GoogleFonts.montserrat(
+                                  color: boardOfEdInTwelfth == "cbse/icse" ? _secondaryColour : _primaryColour,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          boardOfEdInTwelfth = "state";
-                        });
-                      },
-                      child: Container(
-                        width: ResponsiveUnit().width(context, 200),
-                        height: ResponsiveUnit().height(context, 70),
-                        decoration: BoxDecoration(
-                            color: boardOfEdInTwelfth == "state" ? _primaryColour : _secondaryColour,
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
-                        child: Center(
-                          child: Text(
-                            'state',
-                            style: GoogleFonts.montserrat(
-                                color: boardOfEdInTwelfth == "state" ? _secondaryColour : _primaryColour,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            boardOfEdInTwelfth = "state";
+                          });
+                        },
+                        child: Container(
+                          width: ResponsiveUnit().width(context, 200),
+                          height: ResponsiveUnit().height(context, 70),
+                          decoration: BoxDecoration(
+                              color: boardOfEdInTwelfth == "state" ? _primaryColour : _secondaryColour,
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(color: _primaryColour, width: 3)
+                          ),
+                          child: Center(
+                            child: Text(
+                              'state',
+                              style: GoogleFonts.montserrat(
+                                  color: boardOfEdInTwelfth == "state" ? _secondaryColour : _primaryColour,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          boardOfEdInTwelfth = "ib";
-                        });
-                      },
-                      child: Container(
-                        width: ResponsiveUnit().width(context, 200),
-                        height: ResponsiveUnit().height(context, 70),
-                        decoration: BoxDecoration(
-                            color: boardOfEdInTwelfth == "ib" ? _primaryColour : _secondaryColour,
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
-                        child: Center(
-                          child: Text(
-                            'ib',
-                            style: GoogleFonts.montserrat(
-                                color: boardOfEdInTwelfth == "ib" ? _secondaryColour : _primaryColour,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            boardOfEdInTwelfth = "ib";
+                          });
+                        },
+                        child: Container(
+                          width: ResponsiveUnit().width(context, 200),
+                          height: ResponsiveUnit().height(context, 70),
+                          decoration: BoxDecoration(
+                              color: boardOfEdInTwelfth == "ib" ? _primaryColour : _secondaryColour,
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(color: _primaryColour, width: 3)
+                          ),
+                          child: Center(
+                            child: Text(
+                              'ib',
+                              style: GoogleFonts.montserrat(
+                                  color: boardOfEdInTwelfth == "ib" ? _secondaryColour : _primaryColour,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          boardOfEdInTwelfth = "a - levels";
-                        });
-                      },
-                      child: Container(
-                        width: ResponsiveUnit().width(context, 200),
-                        height: ResponsiveUnit().height(context, 70),
-                        decoration: BoxDecoration(
-                            color: boardOfEdInTwelfth == "a - levels" ? _primaryColour : _secondaryColour,
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
-                        child: Center(
-                          child: Text(
-                            'a - levels',
-                            style: GoogleFonts.montserrat(
-                                color: boardOfEdInTwelfth == "a - levels" ? _secondaryColour : _primaryColour,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            boardOfEdInTwelfth = "A - Levels";
+                          });
+                        },
+                        child: Container(
+                          width: ResponsiveUnit().width(context, 200),
+                          height: ResponsiveUnit().height(context, 70),
+                          decoration: BoxDecoration(
+                              color: boardOfEdInTwelfth == "A - Levels" ? _primaryColour : _secondaryColour,
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(color: _primaryColour, width: 3)
+                          ),
+                          child: Center(
+                            child: Text(
+                              'A - Levels',
+                              style: GoogleFonts.montserrat(
+                                  color: boardOfEdInTwelfth == "A - Levels" ? _secondaryColour : _primaryColour,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: ResponsiveUnit().height(context, 64),
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            SizedBox(
+              height: ResponsiveUnit().height(context, 64),
             ),
 
             InkWell(
@@ -442,7 +451,8 @@ const _totalNumberOfPages = 5;
 const _boardOfEdPageNum = 1;
 const _gradePageNum = 2;
 const _compExamPageNum = 3;
-const _englishExamPageNum = 4;
+const _essayPageNum = 4;
+const _extraCurricularPageNum = 5;
 
 class Grade extends StatefulWidget {
   const Grade({super.key});
@@ -488,7 +498,7 @@ class _GradeState extends State<Grade> {
                   child: LinearProgressIndicator(
                     borderRadius: BorderRadius.circular(10),
                     value: _gradePageNum/_totalNumberOfPages,
-                    backgroundColor: const BeaconTheme().saturatedPrimaryColour,
+                    backgroundColor: _saturatedPrimaryColour,
                   ),
                 )
             ),
@@ -496,13 +506,22 @@ class _GradeState extends State<Grade> {
               height: ResponsiveUnit().height(context, 64),
             ),
 
-            gradeDeciderTenth(portfolio),
-
             SizedBox(
-              height: ResponsiveUnit().height(context, 64),
-            ),
+              width: ResponsiveUnit().width(context, 1260),
+              height: ResponsiveUnit().height(context, 540),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  gradeDeciderTenth(portfolio),
 
-            gradeDeciderTwelfth(portfolio),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 64),
+                  ),
+
+                  gradeDeciderTwelfth(portfolio),
+                ],
+              ),
+            ),
 
             SizedBox(
               height: ResponsiveUnit().height(context, 64),
@@ -553,7 +572,7 @@ class _GradeState extends State<Grade> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'class 10th %age at ${portfolio["boardOfEdInTenth"] as String}',
+                'Class 10th %age at ${portfolio["boardOfEdInTenth"] as String}',
                 style: GoogleFonts.montserrat(
                     decoration: TextDecoration.underline,
                     decorationColor: _primaryColour,
@@ -579,10 +598,10 @@ class _GradeState extends State<Grade> {
                             hintText: '93',
                             hintStyle: GoogleFonts.montserrat(
                                 decoration: TextDecoration.underline,
-                                decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                decorationColor: _saturatedPrimaryColour,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 36,
-                                color: const BeaconTheme().saturatedPrimaryColour
+                                color: _saturatedPrimaryColour
                             ),
                             hintMaxLines: 1,
                             border: InputBorder.none
@@ -611,7 +630,7 @@ class _GradeState extends State<Grade> {
                       style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
                           fontSize: 36,
-                          color: const BeaconTheme().saturatedPrimaryColour
+                          color: _saturatedPrimaryColour
                       ),
                     )
                   ],
@@ -631,7 +650,7 @@ class _GradeState extends State<Grade> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'class 10th %age at ${portfolio["boardOfEdInTenth"] as String}',
+                'Class 10th %age at ${portfolio["boardOfEdInTenth"] as String}',
                 style: GoogleFonts.montserrat(
                     decoration: TextDecoration.underline,
                     decorationColor: _primaryColour,
@@ -657,10 +676,10 @@ class _GradeState extends State<Grade> {
                             hintText: '93',
                             hintStyle: GoogleFonts.montserrat(
                                 decoration: TextDecoration.underline,
-                                decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                decorationColor: _saturatedPrimaryColour,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 36,
-                                color: const BeaconTheme().saturatedPrimaryColour
+                                color: _saturatedPrimaryColour
                             ),
                             hintMaxLines: 1,
                             border: InputBorder.none
@@ -689,7 +708,7 @@ class _GradeState extends State<Grade> {
                       style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
                           fontSize: 36,
-                          color: const BeaconTheme().saturatedPrimaryColour
+                          color: _saturatedPrimaryColour
                       ),
                     )
                   ],
@@ -709,7 +728,7 @@ class _GradeState extends State<Grade> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'class 10th %age at ${portfolio["boardOfEdInTenth"] as String}',
+                'Class 10th %age at ${portfolio["boardOfEdInTenth"] as String}',
                 style: GoogleFonts.montserrat(
                     decoration: TextDecoration.underline,
                     decorationColor: _primaryColour,
@@ -735,10 +754,10 @@ class _GradeState extends State<Grade> {
                             hintText: '93',
                             hintStyle: GoogleFonts.montserrat(
                                 decoration: TextDecoration.underline,
-                                decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                decorationColor: _saturatedPrimaryColour,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 36,
-                                color: const BeaconTheme().saturatedPrimaryColour
+                                color: _saturatedPrimaryColour
                             ),
                             hintMaxLines: 1,
                             border: InputBorder.none
@@ -767,7 +786,7 @@ class _GradeState extends State<Grade> {
                       style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
                           fontSize: 36,
-                          color: const BeaconTheme().saturatedPrimaryColour
+                          color: _saturatedPrimaryColour
                       ),
                     )
                   ],
@@ -779,7 +798,7 @@ class _GradeState extends State<Grade> {
           ),
         );
 
-      case "igcse":
+      case "IGCSE":
         return SizedBox(
           width: ResponsiveUnit().width(context, 1260),
           height: ResponsiveUnit().height(context, 220),
@@ -787,7 +806,7 @@ class _GradeState extends State<Grade> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'igcse grade',
+                'IGCSE Grade',
                 style: GoogleFonts.montserrat(
                     decoration: TextDecoration.underline,
                     decorationColor: _primaryColour,
@@ -1013,7 +1032,7 @@ class _GradeState extends State<Grade> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'class 12th %age at ${portfolio["boardOfEdInTwelfth"] as String}',
+                'Class 12th %age at ${portfolio["boardOfEdInTwelfth"] as String}',
                 style: GoogleFonts.montserrat(
                     decoration: TextDecoration.underline,
                     decorationColor: _primaryColour,
@@ -1039,10 +1058,10 @@ class _GradeState extends State<Grade> {
                             hintText: '89',
                             hintStyle: GoogleFonts.montserrat(
                                 decoration: TextDecoration.underline,
-                                decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                decorationColor: _saturatedPrimaryColour,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 36,
-                                color: const BeaconTheme().saturatedPrimaryColour
+                                color: _saturatedPrimaryColour
                             ),
                             hintMaxLines: 1,
                             border: InputBorder.none
@@ -1071,7 +1090,7 @@ class _GradeState extends State<Grade> {
                       style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
                           fontSize: 36,
-                          color: const BeaconTheme().saturatedPrimaryColour
+                          color: _saturatedPrimaryColour
                       ),
                     )
                   ],
@@ -1091,7 +1110,7 @@ class _GradeState extends State<Grade> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'class 12th %age at ${portfolio["boardOfEdInTwelfth"] as String}',
+                'Class 12th %age at ${portfolio["boardOfEdInTwelfth"] as String}',
                 style: GoogleFonts.montserrat(
                     decoration: TextDecoration.underline,
                     decorationColor: _primaryColour,
@@ -1117,10 +1136,10 @@ class _GradeState extends State<Grade> {
                             hintText: '89',
                             hintStyle: GoogleFonts.montserrat(
                                 decoration: TextDecoration.underline,
-                                decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                decorationColor: _saturatedPrimaryColour,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 36,
-                                color: const BeaconTheme().saturatedPrimaryColour
+                                color: _saturatedPrimaryColour
                             ),
                             hintMaxLines: 1,
                             border: InputBorder.none
@@ -1149,7 +1168,7 @@ class _GradeState extends State<Grade> {
                       style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
                           fontSize: 36,
-                          color: gradeInTwelfth.isNotEmpty ? _primaryColour : const BeaconTheme().saturatedPrimaryColour
+                          color: _saturatedPrimaryColour
                       ),
                     )
                   ],
@@ -1164,7 +1183,7 @@ class _GradeState extends State<Grade> {
       case "ib":
         return SizedBox();
 
-      case "a - levels":
+      case "A - Levels":
         return SizedBox(
           width: ResponsiveUnit().width(context, 1260),
           height: ResponsiveUnit().height(context, 220),
@@ -1172,7 +1191,7 @@ class _GradeState extends State<Grade> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'a - levels grade',
+                'A - Levels Grade',
                 style: GoogleFonts.montserrat(
                     decoration: TextDecoration.underline,
                     decorationColor: _primaryColour,
@@ -1434,7 +1453,7 @@ class _CompExamState extends State<CompExam> {
                   child: LinearProgressIndicator(
                     borderRadius: BorderRadius.circular(10),
                     value: _compExamPageNum/_totalNumberOfPages,
-                    backgroundColor: const BeaconTheme().saturatedPrimaryColour,
+                    backgroundColor: _saturatedPrimaryColour,
                   ),
                 )
             ),
@@ -1444,12 +1463,12 @@ class _CompExamState extends State<CompExam> {
 
             SizedBox(
               width: ResponsiveUnit().width(context, 1260),
-              height: ResponsiveUnit().height(context, 470),
+              height: ResponsiveUnit().height(context, 540),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'sat',
+                    'SAT',
                     style: GoogleFonts.montserrat(
                         decoration: TextDecoration.underline,
                         decorationColor: _primaryColour,
@@ -1474,10 +1493,10 @@ class _CompExamState extends State<CompExam> {
                                 hintText: '1450',
                                 hintStyle: GoogleFonts.montserrat(
                                     decoration: TextDecoration.underline,
-                                    decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                    decorationColor: _saturatedPrimaryColour,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 36,
-                                    color: const BeaconTheme().saturatedPrimaryColour
+                                    color: _saturatedPrimaryColour
                                 ),
                                 hintMaxLines: 1,
                                 border: InputBorder.none
@@ -1506,7 +1525,7 @@ class _CompExamState extends State<CompExam> {
                           style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.bold,
                               fontSize: 36,
-                              color: const BeaconTheme().saturatedPrimaryColour
+                              color: _saturatedPrimaryColour
                           ),
                         )
                       ],
@@ -1514,7 +1533,7 @@ class _CompExamState extends State<CompExam> {
                   ),
 
                   Text(
-                    'act',
+                    'ACT',
                     style: GoogleFonts.montserrat(
                         decoration: TextDecoration.underline,
                         decorationColor: _primaryColour,
@@ -1539,10 +1558,10 @@ class _CompExamState extends State<CompExam> {
                                 hintText: '24',
                                 hintStyle: GoogleFonts.montserrat(
                                     decoration: TextDecoration.underline,
-                                    decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                    decorationColor: _saturatedPrimaryColour,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 36,
-                                    color: const BeaconTheme().saturatedPrimaryColour
+                                    color: _saturatedPrimaryColour
                                 ),
                                 hintMaxLines: 1,
                                 border: InputBorder.none
@@ -1571,7 +1590,7 @@ class _CompExamState extends State<CompExam> {
                           style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.bold,
                               fontSize: 36,
-                              color: const BeaconTheme().saturatedPrimaryColour
+                              color: _saturatedPrimaryColour
                           ),
                         )
                       ],
@@ -1590,7 +1609,7 @@ class _CompExamState extends State<CompExam> {
                 if(scoreInSat != 0 || scoreInAct != 0) {
                   portfolio["scoreInSat"] = scoreInSat;
                   portfolio["scoreInAct"] = scoreInAct;
-                  Navigator.pushNamed(context, '/onboarding/english-exam', arguments: portfolio);
+                  Navigator.pushNamed(context, '/onboarding/essay', arguments: portfolio);
                 }
               },
               child: Container(
@@ -1622,17 +1641,17 @@ class _CompExamState extends State<CompExam> {
 
 }
 
-class EnglishExam extends StatefulWidget {
-  const EnglishExam({super.key});
+class Essay extends StatefulWidget {
+  const Essay({super.key});
 
   @override
-  State<StatefulWidget> createState() => _EnglishExamState();
+  State<StatefulWidget> createState() => _EssayState();
+
 }
 
-class _EnglishExamState extends State<EnglishExam> {
+class _EssayState extends State<Essay> {
 
-  int scoreInToefl = 0;
-  double scoreInIelts = 0;
+  String essay = "";
 
   @override
   Widget build(BuildContext context) {
@@ -1665,8 +1684,8 @@ class _EnglishExamState extends State<EnglishExam> {
                   height: ResponsiveUnit().height(context, 20),
                   child: LinearProgressIndicator(
                     borderRadius: BorderRadius.circular(10),
-                    value: _englishExamPageNum/_totalNumberOfPages,
-                    backgroundColor: const BeaconTheme().saturatedPrimaryColour,
+                    value: _essayPageNum/_totalNumberOfPages,
+                    backgroundColor: _saturatedPrimaryColour,
                   ),
                 )
             ),
@@ -1675,13 +1694,13 @@ class _EnglishExamState extends State<EnglishExam> {
             ),
 
             SizedBox(
-              width: ResponsiveUnit().width(context, 1260),
-              height: ResponsiveUnit().height(context, 470),
+              width: ResponsiveUnit().width(context, 1340),
+              height: ResponsiveUnit().height(context, 540),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'toefl',
+                    'Essay',
                     style: GoogleFonts.montserrat(
                         decoration: TextDecoration.underline,
                         decorationColor: _primaryColour,
@@ -1691,125 +1710,42 @@ class _EnglishExamState extends State<EnglishExam> {
                     ),
                   ),
                   SizedBox(
-                    height: ResponsiveUnit().height(context, 12),
+                    height: ResponsiveUnit().height(context, 36),
                   ),
-                  SizedBox(
-                    width: ResponsiveUnit().width(context, 280),
-                    height: ResponsiveUnit().height(context, 150),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: ResponsiveUnit().width(context, 75),
-                          height: ResponsiveUnit().height(context, 80),
-                          child: TextField(
-                            decoration: InputDecoration(
-                                hintText: '87',
-                                hintStyle: GoogleFonts.montserrat(
-                                    decoration: TextDecoration.underline,
-                                    decorationColor: const BeaconTheme().saturatedPrimaryColour,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 36,
-                                    color: const BeaconTheme().saturatedPrimaryColour
-                                ),
-                                hintMaxLines: 1,
-                                border: InputBorder.none
-                            ),
-                            keyboardType: TextInputType.number,
-                            onChanged: (String inputScoreInToefl) {
-                              setState(() {
-                                scoreInToefl = int.parse(inputScoreInToefl);
-                              });
-                            },
-                            style: GoogleFonts.montserrat(
-                                decoration: TextDecoration.underline,
-                                decorationColor: _primaryColour,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 36,
-                                color: _primaryColour
-                            ),
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
 
-                          ),
-                        ),
-                        Text(
-                          ' / 120',
-                          style: GoogleFonts.montserrat(
+                  Container(
+                    width: ResponsiveUnit().width(context, 1340),
+                    height: ResponsiveUnit().height(context, 430),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: essay.isEmpty ? _saturatedPrimaryColour : _primaryColour, width: 3),
+                      borderRadius: BorderRadius.circular(50)
+                    ),
+                    padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          hintText: 'write a 650 worded essay on any prompt of your choice',
+                          hintStyle: GoogleFonts.montserrat(
                               fontWeight: FontWeight.bold,
-                              fontSize: 36,
-                              color: const BeaconTheme().saturatedPrimaryColour
+                              fontSize: 16,
+                              color: _saturatedPrimaryColour
                           ),
-                        )
-                      ],
-                    ),
-                  ),
+                          border: InputBorder.none
+                      ),
+                      keyboardType: TextInputType.multiline,
+                      maxLines: null,
+                      onChanged: (String inputEssay) {
+                        setState(() {
+                          essay = inputEssay;
+                        });
+                      },
+                      style: GoogleFonts.montserrat(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: _primaryColour
+                      ),
+                    )
+                  )
 
-                  Text(
-                    'ielts',
-                    style: GoogleFonts.montserrat(
-                        decoration: TextDecoration.underline,
-                        decorationColor: _primaryColour,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 36,
-                        color: _primaryColour
-                    ),
-                  ),
-                  SizedBox(
-                    height: ResponsiveUnit().height(context, 48),
-                  ),
-                  SizedBox(
-                    width: ResponsiveUnit().width(context, 200),
-                    height: ResponsiveUnit().height(context, 80),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: ResponsiveUnit().width(context, 80),
-                          height: ResponsiveUnit().height(context, 80),
-                          child: TextField(
-                            decoration: InputDecoration(
-                                hintText: '8.5',
-                                hintStyle: GoogleFonts.montserrat(
-                                    decoration: TextDecoration.underline,
-                                    decorationColor: const BeaconTheme().saturatedPrimaryColour,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 36,
-                                    color: const BeaconTheme().saturatedPrimaryColour
-                                ),
-                                hintMaxLines: 1,
-                                border: InputBorder.none
-                            ),
-                            // todo: allow decimal
-                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                            onChanged: (String inputScoreInIelts) {
-                              setState(() {
-                                scoreInIelts = double.parse(inputScoreInIelts);
-                              });
-                            },
-                            style: GoogleFonts.montserrat(
-                                decoration: TextDecoration.underline,
-                                decorationColor: _primaryColour,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 36,
-                                color: _primaryColour
-                            ),
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-
-                          ),
-                        ),
-                        Text(
-                          '/ 9',
-                          style: GoogleFonts.montserrat(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 36,
-                              color: const BeaconTheme().saturatedPrimaryColour
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -1820,38 +1756,42 @@ class _EnglishExamState extends State<EnglishExam> {
 
             InkWell(
               onTap: () {
-                if(scoreInToefl != 0 || scoreInIelts != 0) {
-                  portfolio["scoreInToefl"] = scoreInToefl;
-                  portfolio["scoreInIelts"] = scoreInIelts;
+                if(essay.isNotEmpty) {
+                  portfolio["essay"] = essay;
+                  
+                  Navigator.pushNamed(context, '/onboarding/extra-curricular', arguments: portfolio);
 
-                  PortfolioApi().insertPortfolio(
-                    Portfolio(
-                      Auth().getUserId() as String,
-                      portfolio["boardOfEdInTenth"] as String,
-                      portfolio["boardOfEdInTwelfth"] as String,
-                      portfolio["gradeInTenth"] as String,
-                      portfolio["gradeInTwelfth"] as String,
-                      portfolio["scoreInSat"] as int,
-                      portfolio["scoreInAct"] as int,
-                      portfolio["scoreInToefl"] as int,
-                      portfolio["scoreInIelts"] as double,
-                    )
-                  ).then((_) {
-                    print("success");
-                  }).catchError((e) {
-                    print(e);
-                  });
-
-                  // todo: prompt eng
+                  // PortfolioApi().insertPortfolio(
+                  //     Portfolio(
+                  //       Auth().getUserId() as String,
+                  //       portfolio["boardOfEdInTenth"] as String,
+                  //       portfolio["boardOfEdInTwelfth"] as String,
+                  //       portfolio["gradeInTenth"] as String,
+                  //       portfolio["gradeInTwelfth"] as String,
+                  //       portfolio["scoreInSat"] as int,
+                  //       portfolio["scoreInAct"] as int,
+                  //       portfolio["essay"] as String,
+                  //       portfolio["passionProject"] as String,
+                  //       portfolio["sports"] as String,
+                  //       portfolio["awards"] as String
+                  //     )
+                  // ).then((_) {
+                  //   print("success");
+                  //
+                  //   // todo: take to dashboard
+                  //
+                  // }).catchError((e) {
+                  //   print(e);
+                  // });
                 }
               },
               child: Container(
                   width: ResponsiveUnit().width(context, 200),
                   height: ResponsiveUnit().height(context, 85),
                   decoration: BoxDecoration(
-                      color: scoreInToefl != 0 || scoreInIelts != 0 ? _primaryColour : _secondaryColour,
+                      color: essay.isNotEmpty ? _primaryColour : _secondaryColour,
                       borderRadius: BorderRadius.circular(30),
-                      boxShadow: scoreInToefl != 0 || scoreInIelts != 0 ? [ _boxShadow ] : null,
+                      boxShadow: essay.isNotEmpty ? [ _boxShadow ] : null,
                       border: Border.all(color: _primaryColour, width: 3)
                   ),
                   child: Center(
@@ -1859,7 +1799,7 @@ class _EnglishExamState extends State<EnglishExam> {
                       'next!',
                       style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.bold,
-                        color: scoreInToefl != 0 || scoreInIelts != 0 ? _secondaryColour : _primaryColour,
+                        color: essay.isNotEmpty ? _secondaryColour : _primaryColour,
                         fontSize: 20,
                       ),
                     ),
@@ -1872,3 +1812,687 @@ class _EnglishExamState extends State<EnglishExam> {
     );
   }
 }
+
+class ExtraCurricular extends StatefulWidget {
+  const ExtraCurricular({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _ExtraCurricularState();
+
+}
+
+class _ExtraCurricularState extends State<ExtraCurricular> {
+
+  String passionProject = "";
+  String sports = "";
+  String awardsFirst = "";
+  String awardsSecond = "";
+  String awardsThird = "";
+
+  @override
+  Widget build(BuildContext context) {
+
+    final portfolio = ModalRoute.of(context)?.settings.arguments as Map<String, Object>;
+
+    return Scaffold(
+      backgroundColor: _secondaryColour,
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(64, 24, 64, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+                child: Text(
+                  'creating your college list',
+                  style: GoogleFonts.montserrat(
+                      color: _primaryColour,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 36
+                  ),
+                  textAlign: TextAlign.center,
+                )
+            ),
+            SizedBox(
+              height: ResponsiveUnit().height(context, 48),
+            ),
+            Center(
+                child: SizedBox(
+                  height: ResponsiveUnit().height(context, 20),
+                  child: LinearProgressIndicator(
+                    borderRadius: BorderRadius.circular(10),
+                    value: _extraCurricularPageNum/_totalNumberOfPages,
+                    backgroundColor: _saturatedPrimaryColour,
+                  ),
+                )
+            ),
+            SizedBox(
+              height: ResponsiveUnit().height(context, 64),
+            ),
+            
+            SizedBox(
+              width: ResponsiveUnit().width(context, 1340),
+              height: ResponsiveUnit().height(context, 540),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Extra Curricular',
+                    style: GoogleFonts.montserrat(
+                        decoration: TextDecoration.underline,
+                        decorationColor: _primaryColour,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 36,
+                        color: _primaryColour
+                    ),
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 48),
+                  ),
+
+                  InkWell(
+                    onTap: () {
+                      _showPassionProject(context);
+                    },
+                    child: Container(
+                      width: ResponsiveUnit().width(context, 1250),
+                      height: ResponsiveUnit().width(context, 90),
+                      decoration: BoxDecoration(
+                        color: _primaryColour,
+                        borderRadius: BorderRadius.circular(40),
+                        boxShadow: [ _boxShadow ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Passion Projects',
+                              style: GoogleFonts.montserrat(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24,
+                                  color: _secondaryColour
+                              ),
+                            ),
+                            Icon(
+                              Icons.keyboard_arrow_right_rounded,
+                              size: ResponsiveUnit().width(context, 48),
+                              color: _secondaryColour,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 54),
+                  ),
+
+                  InkWell(
+                    onTap: () {
+                      _showSports(context);
+                    },
+                    child: Container(
+                      width: ResponsiveUnit().width(context, 1250),
+                      height: ResponsiveUnit().width(context, 90),
+                      decoration: BoxDecoration(
+                        color: _primaryColour,
+                        borderRadius: BorderRadius.circular(40),
+                        boxShadow: [ _boxShadow ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Sports',
+                              style: GoogleFonts.montserrat(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24,
+                                  color: _secondaryColour
+                              ),
+                            ),
+                            Icon(
+                              Icons.keyboard_arrow_right_rounded,
+                              size: ResponsiveUnit().width(context, 48),
+                              color: _secondaryColour,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 54),
+                  ),
+
+                  InkWell(
+                    onTap: () {
+                      _showAwards(context);
+                    },
+                    child: Container(
+                      width: ResponsiveUnit().width(context, 1250),
+                      height: ResponsiveUnit().width(context, 90),
+                      decoration: BoxDecoration(
+                        color: _primaryColour,
+                        borderRadius: BorderRadius.circular(40),
+                        boxShadow: [ _boxShadow ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Awards',
+                              style: GoogleFonts.montserrat(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24,
+                                  color: _secondaryColour
+                              ),
+                            ),
+                            Icon(
+                              Icons.keyboard_arrow_right_rounded,
+                              size: ResponsiveUnit().width(context, 48),
+                              color: _secondaryColour,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            SizedBox(
+              height: ResponsiveUnit().height(context, 64),
+            ),
+
+            InkWell(
+              onTap: () {
+
+                portfolio["passionProject"] = passionProject;
+                portfolio["sports"] = sports;
+                portfolio["awards"] = "$awardsFirst \n $awardsSecond \n $awardsThird";
+
+                // todo: essay edge functions
+
+                /// temp
+                portfolio["essay"] = 5;
+
+                PortfolioApi().insertPortfolio(
+                    Portfolio(
+                      Auth().getUserId() as String,
+                      portfolio["boardOfEdInTenth"] as String,
+                      portfolio["boardOfEdInTwelfth"] as String,
+                      portfolio["gradeInTenth"] as String,
+                      portfolio["gradeInTwelfth"] as String,
+                      portfolio["scoreInSat"] as int,
+                      portfolio["scoreInAct"] as int,
+                      portfolio["essay"] as double,
+                      portfolio["passionProject"] as String,
+                      portfolio["sports"] as String,
+                      portfolio["awards"] as String
+                    )
+                ).then((_) {
+                  print("success");
+
+                  /// take to dashboard
+                  // todo: new dashboard url, new route.
+
+                }).catchError((e) {
+                  print(e);
+                });
+              },
+              child: Container(
+                  width: ResponsiveUnit().width(context, 200),
+                  height: ResponsiveUnit().height(context, 85),
+                  decoration: BoxDecoration(
+                      color: _primaryColour,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [ _boxShadow ],
+                      border: Border.all(color: _primaryColour, width: 3)
+                  ),
+                  child: Center(
+                    child: Text(
+                      'next!',
+                      style: GoogleFonts.montserrat(
+                        fontWeight: FontWeight.bold,
+                        color: _secondaryColour,
+                        fontSize: 20,
+                      ),
+                    ),
+                  )
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _showPassionProject(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true, // user must tap button!
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(75),
+          ),
+          elevation: 5.0,
+          backgroundColor: _primaryColour,
+          child: SizedBox(
+            width: ResponsiveUnit().width(context, 900),
+            height: ResponsiveUnit().height(context, 550),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 24, 0, 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Passion Project',
+                    style: GoogleFonts.montserrat(
+                      color: _secondaryColour,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
+                      decoration: TextDecoration.underline,
+                      decorationColor: _secondaryColour,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 12),
+                  ),
+                  Text(
+                    'write your most significant one',
+                    style: GoogleFonts.montserrat(
+                        color: const BeaconTheme().secondaryColour,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 36),
+                  ),
+                  Container(
+                      width: ResponsiveUnit().width(context, 800),
+                      height: ResponsiveUnit().height(context, 230),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: _secondaryColour, width: 3),
+                          borderRadius: BorderRadius.circular(40)
+                      ),
+                      padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintText: passionProject.isNotEmpty ? passionProject : 'describe your passion project, how long you have been working and if there was any measurable impact',
+                            hintStyle: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                                color: _secondaryColour
+                            ),
+                            border: InputBorder.none,
+                            hintMaxLines: null,
+                        ),
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        onChanged: (String inputPassionProject) {
+                          passionProject = inputPassionProject;
+                        },
+                        style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                            color: _secondaryColour
+                        ),
+                      )
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 32),
+                  ),
+                  Center(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+
+                        setState(() {});
+                      },
+                      child: Container(
+                          width: ResponsiveUnit().width(context, 200),
+                          height: ResponsiveUnit().height(context, 75),
+                          decoration: BoxDecoration(
+                              color: const BeaconTheme().secondaryColour,
+                              borderRadius: BorderRadius.circular(15)
+                          ),
+                          child: Center(
+                            child: Text(
+                              'save',
+                              style: GoogleFonts.montserrat(
+                                  color: const BeaconTheme().primaryColour,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          )
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _showSports(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true, // user must tap button!
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(75),
+          ),
+          elevation: 5.0,
+          backgroundColor: _primaryColour,
+          child: SizedBox(
+            width: ResponsiveUnit().width(context, 900),
+            height: ResponsiveUnit().height(context, 550),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 24, 0, 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Sports',
+                    style: GoogleFonts.montserrat(
+                      color: _secondaryColour,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
+                      decoration: TextDecoration.underline,
+                      decorationColor: _secondaryColour,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 12),
+                  ),
+                  Text(
+                    'write your top two sports achievements',
+                    style: GoogleFonts.montserrat(
+                        color: const BeaconTheme().secondaryColour,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 36),
+                  ),
+                  Container(
+                      width: ResponsiveUnit().width(context, 800),
+                      height: ResponsiveUnit().height(context, 230),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: _secondaryColour, width: 3),
+                          borderRadius: BorderRadius.circular(40)
+                      ),
+                      padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: sports.isNotEmpty ? sports : 'list down the competition names and your placement',
+                          hintStyle: GoogleFonts.montserrat(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                              color: _secondaryColour
+                          ),
+                          border: InputBorder.none,
+                          hintMaxLines: null,
+                        ),
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        onChanged: (String inputSports) {
+                          sports = inputSports;
+                        },
+                        style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                            color: _secondaryColour
+                        ),
+                      )
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 32),
+                  ),
+                  Center(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+
+                        setState(() {});
+                      },
+                      child: Container(
+                          width: ResponsiveUnit().width(context, 200),
+                          height: ResponsiveUnit().height(context, 75),
+                          decoration: BoxDecoration(
+                              color: const BeaconTheme().secondaryColour,
+                              borderRadius: BorderRadius.circular(15)
+                          ),
+                          child: Center(
+                            child: Text(
+                              'save',
+                              style: GoogleFonts.montserrat(
+                                  color: const BeaconTheme().primaryColour,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          )
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _showAwards(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true, // user must tap button!
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(75),
+          ),
+          elevation: 5.0,
+          backgroundColor: _primaryColour,
+          child: SizedBox(
+            width: ResponsiveUnit().width(context, 900),
+            height: ResponsiveUnit().height(context, 805),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 24, 0, 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Awards',
+                    style: GoogleFonts.montserrat(
+                      color: _secondaryColour,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
+                      decoration: TextDecoration.underline,
+                      decorationColor: _secondaryColour,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 12),
+                  ),
+                  Text(
+                    'write your top three awards or achievements',
+                    style: GoogleFonts.montserrat(
+                        color: const BeaconTheme().secondaryColour,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 36),
+                  ),
+
+                  Container(
+                      width: ResponsiveUnit().width(context, 800),
+                      height: ResponsiveUnit().height(context, 140),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: _secondaryColour, width: 3),
+                          borderRadius: BorderRadius.circular(40)
+                      ),
+                      padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: awardsFirst.isNotEmpty ? awardsFirst : 'try to mention any objective data i.e went up against 1.2 mil students',
+                          hintStyle: GoogleFonts.montserrat(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                              color: _secondaryColour
+                          ),
+                          border: InputBorder.none,
+                          hintMaxLines: null,
+                        ),
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        onChanged: (String inputAwardsFirst) {
+                          awardsFirst = inputAwardsFirst;
+                        },
+                        style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                            color: _secondaryColour
+                        ),
+                      )
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 36),
+                  ),
+
+                  Container(
+                      width: ResponsiveUnit().width(context, 800),
+                      height: ResponsiveUnit().height(context, 140),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: _secondaryColour, width: 3),
+                          borderRadius: BorderRadius.circular(40)
+                      ),
+                      padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: awardsSecond.isNotEmpty ? awardsSecond : 'use buzz words like regional level, world’s largest, etc',
+                          hintStyle: GoogleFonts.montserrat(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                              color: _secondaryColour
+                          ),
+                          border: InputBorder.none,
+                          hintMaxLines: null,
+                        ),
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        onChanged: (String inputAwardsSecond) {
+                          awardsSecond = inputAwardsSecond;
+                        },
+                        style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                            color: _secondaryColour
+                        ),
+                      )
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 36),
+                  ),
+
+                  Container(
+                      width: ResponsiveUnit().width(context, 800),
+                      height: ResponsiveUnit().height(context, 140),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: _secondaryColour, width: 3),
+                          borderRadius: BorderRadius.circular(40)
+                      ),
+                      padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: awardsThird.isNotEmpty ? awardsThird : 'limit your response to 30 words in each prompt',
+                          hintStyle: GoogleFonts.montserrat(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                              color: _secondaryColour
+                          ),
+                          border: InputBorder.none,
+                          hintMaxLines: null,
+                        ),
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        onChanged: (String inputAwardsThird) {
+                          awardsThird = inputAwardsThird;
+                        },
+                        style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                            color: _secondaryColour
+                        ),
+                      )
+                  ),
+                  SizedBox(
+                    height: ResponsiveUnit().height(context, 36),
+                  ),
+
+                  Center(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+
+                        setState(() {});
+                      },
+                      child: Container(
+                          width: ResponsiveUnit().width(context, 200),
+                          height: ResponsiveUnit().height(context, 75),
+                          decoration: BoxDecoration(
+                              color: const BeaconTheme().secondaryColour,
+                              borderRadius: BorderRadius.circular(15)
+                          ),
+                          child: Center(
+                            child: Text(
+                              'save',
+                              style: GoogleFonts.montserrat(
+                                  color: const BeaconTheme().primaryColour,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          )
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+}
+
+
