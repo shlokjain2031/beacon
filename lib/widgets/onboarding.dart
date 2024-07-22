@@ -38,38 +38,35 @@ class Onboarding extends StatelessWidget {
                     decorationColor: _primaryColour,
                     fontSize: 48,
                     fontWeight: FontWeight.bold,
-                    color: const BeaconTheme().primaryColour
-                ),
+                    color: const BeaconTheme().primaryColour),
               ),
               Text(
                 'we will ask you five questions\nto build you a basic safety - reach list',
                 style: GoogleFonts.montserrat(
                     fontSize: 20,
                     fontWeight: FontWeight.normal,
-                    color: const BeaconTheme().primaryColour
-                ),
+                    color: const BeaconTheme().primaryColour),
                 textAlign: TextAlign.center,
               ),
               InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, '/onboarding/board-of-education');
+                  Navigator.pushNamed(
+                      context, '/onboarding/board-of-education');
                 },
                 child: Container(
                   width: ResponsiveUnit().width(context, 240),
                   height: ResponsiveUnit().height(context, 90),
                   decoration: BoxDecoration(
                       color: const BeaconTheme().primaryColour,
-                      boxShadow: [ const BeaconTheme().boxShadow ],
-                      borderRadius: BorderRadius.circular(40)
-                  ),
+                      boxShadow: [const BeaconTheme().boxShadow],
+                      borderRadius: BorderRadius.circular(40)),
                   child: Center(
                     child: Text(
                       'create!',
                       style: GoogleFonts.montserrat(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: const BeaconTheme().secondaryColour
-                      ),
+                          color: const BeaconTheme().secondaryColour),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -81,7 +78,6 @@ class Onboarding extends StatelessWidget {
       ),
     );
   }
-
 }
 
 Color _primaryColour = const BeaconTheme().primaryColour;
@@ -97,7 +93,6 @@ class BoardOfEd extends StatefulWidget {
 }
 
 class _BoardOfEdState extends State<BoardOfEd> {
-
   String boardOfEdInTenth = "";
   String boardOfEdInTwelfth = "";
 
@@ -114,32 +109,28 @@ class _BoardOfEdState extends State<BoardOfEd> {
           children: [
             Center(
                 child: Text(
-                  'creating your college list',
-                  style: GoogleFonts.montserrat(
-                      color: _primaryColour,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 36
-                  ),
-                  textAlign: TextAlign.center,
-                )
-            ),
+              'creating your college list',
+              style: GoogleFonts.montserrat(
+                  color: _primaryColour,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 36),
+              textAlign: TextAlign.center,
+            )),
             SizedBox(
               height: ResponsiveUnit().height(context, 48),
             ),
             Center(
                 child: SizedBox(
-                  height: ResponsiveUnit().height(context, 20),
-                  child: LinearProgressIndicator(
-                    borderRadius: BorderRadius.circular(10),
-                    value: _boardOfEdPageNum/_totalNumberOfPages,
-                    backgroundColor: const BeaconTheme().saturatedPrimaryColour,
-                  ),
-                )
-            ),
+              height: ResponsiveUnit().height(context, 20),
+              child: LinearProgressIndicator(
+                borderRadius: BorderRadius.circular(10),
+                value: _boardOfEdPageNum / _totalNumberOfPages,
+                backgroundColor: const BeaconTheme().saturatedPrimaryColour,
+              ),
+            )),
             SizedBox(
               height: ResponsiveUnit().height(context, 64),
             ),
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -150,8 +141,7 @@ class _BoardOfEdState extends State<BoardOfEd> {
                       decorationColor: _primaryColour,
                       fontWeight: FontWeight.normal,
                       fontSize: 36,
-                      color: _primaryColour
-                  ),
+                      color: _primaryColour),
                 ),
                 SizedBox(
                   height: ResponsiveUnit().height(context, 48),
@@ -170,18 +160,21 @@ class _BoardOfEdState extends State<BoardOfEd> {
                         width: ResponsiveUnit().width(context, 200),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: boardOfEdInTenth == "cbse/icse" ? _primaryColour : _secondaryColour,
+                            color: boardOfEdInTenth == "cbse/icse"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'cbse/icse',
                             style: GoogleFonts.montserrat(
-                                color: boardOfEdInTenth == "cbse/icse" ? _secondaryColour : _primaryColour,
+                                color: boardOfEdInTenth == "cbse/icse"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -196,18 +189,21 @@ class _BoardOfEdState extends State<BoardOfEd> {
                         width: ResponsiveUnit().width(context, 200),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: boardOfEdInTenth == "state" ? _primaryColour : _secondaryColour,
+                            color: boardOfEdInTenth == "state"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'state',
                             style: GoogleFonts.montserrat(
-                                color: boardOfEdInTenth == "state" ? _secondaryColour : _primaryColour,
+                                color: boardOfEdInTenth == "state"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -222,18 +218,21 @@ class _BoardOfEdState extends State<BoardOfEd> {
                         width: ResponsiveUnit().width(context, 200),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: boardOfEdInTenth == "open schooling" ? _primaryColour : _secondaryColour,
+                            color: boardOfEdInTenth == "open schooling"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'open schooling',
                             style: GoogleFonts.montserrat(
-                                color: boardOfEdInTenth == "open schooling" ? _secondaryColour : _primaryColour,
+                                color: boardOfEdInTenth == "open schooling"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -248,18 +247,21 @@ class _BoardOfEdState extends State<BoardOfEd> {
                         width: ResponsiveUnit().width(context, 200),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: boardOfEdInTenth == "igcse" ? _primaryColour : _secondaryColour,
+                            color: boardOfEdInTenth == "igcse"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'igcse',
                             style: GoogleFonts.montserrat(
-                                color: boardOfEdInTenth == "igcse" ? _secondaryColour : _primaryColour,
+                                color: boardOfEdInTenth == "igcse"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -269,7 +271,6 @@ class _BoardOfEdState extends State<BoardOfEd> {
                 SizedBox(
                   height: ResponsiveUnit().height(context, 100),
                 ),
-
                 Text(
                   'board of education in 12th',
                   style: GoogleFonts.montserrat(
@@ -277,8 +278,7 @@ class _BoardOfEdState extends State<BoardOfEd> {
                       decorationColor: _primaryColour,
                       fontWeight: FontWeight.normal,
                       fontSize: 36,
-                      color: _primaryColour
-                  ),
+                      color: _primaryColour),
                 ),
                 SizedBox(
                   height: ResponsiveUnit().height(context, 48),
@@ -297,18 +297,21 @@ class _BoardOfEdState extends State<BoardOfEd> {
                         width: ResponsiveUnit().width(context, 200),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: boardOfEdInTwelfth == "cbse/icse" ? _primaryColour : _secondaryColour,
+                            color: boardOfEdInTwelfth == "cbse/icse"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'cbse/icse',
                             style: GoogleFonts.montserrat(
-                                color: boardOfEdInTwelfth == "cbse/icse" ? _secondaryColour : _primaryColour,
+                                color: boardOfEdInTwelfth == "cbse/icse"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -323,18 +326,21 @@ class _BoardOfEdState extends State<BoardOfEd> {
                         width: ResponsiveUnit().width(context, 200),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: boardOfEdInTwelfth == "state" ? _primaryColour : _secondaryColour,
+                            color: boardOfEdInTwelfth == "state"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'state',
                             style: GoogleFonts.montserrat(
-                                color: boardOfEdInTwelfth == "state" ? _secondaryColour : _primaryColour,
+                                color: boardOfEdInTwelfth == "state"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -349,18 +355,21 @@ class _BoardOfEdState extends State<BoardOfEd> {
                         width: ResponsiveUnit().width(context, 200),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: boardOfEdInTwelfth == "ib" ? _primaryColour : _secondaryColour,
+                            color: boardOfEdInTwelfth == "ib"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'ib',
                             style: GoogleFonts.montserrat(
-                                color: boardOfEdInTwelfth == "ib" ? _secondaryColour : _primaryColour,
+                                color: boardOfEdInTwelfth == "ib"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -375,18 +384,21 @@ class _BoardOfEdState extends State<BoardOfEd> {
                         width: ResponsiveUnit().width(context, 200),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: boardOfEdInTwelfth == "a - levels" ? _primaryColour : _secondaryColour,
+                            color: boardOfEdInTwelfth == "a - levels"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'a - levels',
                             style: GoogleFonts.montserrat(
-                                color: boardOfEdInTwelfth == "a - levels" ? _secondaryColour : _primaryColour,
+                                color: boardOfEdInTwelfth == "a - levels"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -398,15 +410,15 @@ class _BoardOfEdState extends State<BoardOfEd> {
                 ),
               ],
             ),
-
             InkWell(
               onTap: () {
-                if(boardOfEdInTenth.isNotEmpty && boardOfEdInTwelfth.isNotEmpty) {
+                if (boardOfEdInTenth.isNotEmpty &&
+                    boardOfEdInTwelfth.isNotEmpty) {
                   portfolio["boardOfEdInTenth"] = boardOfEdInTenth;
                   portfolio["boardOfEdInTwelfth"] = boardOfEdInTwelfth;
-                  Navigator.pushNamed(context, '/onboarding/grade', arguments: portfolio);
-                }
-                else {
+                  Navigator.pushNamed(context, '/onboarding/grade',
+                      arguments: portfolio);
+                } else {
                   // todo: pop a message that informs input all questions
                 }
               },
@@ -414,22 +426,29 @@ class _BoardOfEdState extends State<BoardOfEd> {
                   width: ResponsiveUnit().width(context, 200),
                   height: ResponsiveUnit().height(context, 85),
                   decoration: BoxDecoration(
-                      color: boardOfEdInTenth.isNotEmpty && boardOfEdInTwelfth.isNotEmpty ? _primaryColour : _secondaryColour,
+                      color: boardOfEdInTenth.isNotEmpty &&
+                              boardOfEdInTwelfth.isNotEmpty
+                          ? _primaryColour
+                          : _secondaryColour,
                       borderRadius: BorderRadius.circular(30),
-                      boxShadow: boardOfEdInTenth.isNotEmpty && boardOfEdInTwelfth.isNotEmpty ? [ _boxShadow ] : null,
-                      border: Border.all(color: _primaryColour, width: 3)
-                  ),
+                      boxShadow: boardOfEdInTenth.isNotEmpty &&
+                              boardOfEdInTwelfth.isNotEmpty
+                          ? [_boxShadow]
+                          : null,
+                      border: Border.all(color: _primaryColour, width: 3)),
                   child: Center(
                     child: Text(
                       'next!',
                       style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.bold,
-                        color: boardOfEdInTenth.isNotEmpty && boardOfEdInTwelfth.isNotEmpty ? _secondaryColour : _primaryColour,
+                        color: boardOfEdInTenth.isNotEmpty &&
+                                boardOfEdInTwelfth.isNotEmpty
+                            ? _secondaryColour
+                            : _primaryColour,
                         fontSize: 20,
                       ),
                     ),
-                  )
-              ),
+                  )),
             )
           ],
         ),
@@ -449,17 +468,16 @@ class Grade extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _GradeState();
-
 }
 
 class _GradeState extends State<Grade> {
-
   String gradeInTenth = "";
   String gradeInTwelfth = "";
 
   @override
   Widget build(BuildContext context) {
-    final portfolio = ModalRoute.of(context)?.settings.arguments as Map<String, Object>;
+    final portfolio =
+        ModalRoute.of(context)?.settings.arguments as Map<String, Object>;
 
     return Scaffold(
       backgroundColor: _secondaryColour,
@@ -470,72 +488,72 @@ class _GradeState extends State<Grade> {
           children: [
             Center(
                 child: Text(
-                  'creating your college list',
-                  style: GoogleFonts.montserrat(
-                      color: _primaryColour,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 36
-                  ),
-                  textAlign: TextAlign.center,
-                )
-            ),
+              'creating your college list',
+              style: GoogleFonts.montserrat(
+                  color: _primaryColour,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 36),
+              textAlign: TextAlign.center,
+            )),
             SizedBox(
               height: ResponsiveUnit().height(context, 48),
             ),
             Center(
                 child: SizedBox(
-                  height: ResponsiveUnit().height(context, 20),
-                  child: LinearProgressIndicator(
-                    borderRadius: BorderRadius.circular(10),
-                    value: _gradePageNum/_totalNumberOfPages,
-                    backgroundColor: const BeaconTheme().saturatedPrimaryColour,
-                  ),
-                )
-            ),
+              height: ResponsiveUnit().height(context, 20),
+              child: LinearProgressIndicator(
+                borderRadius: BorderRadius.circular(10),
+                value: _gradePageNum / _totalNumberOfPages,
+                backgroundColor: const BeaconTheme().saturatedPrimaryColour,
+              ),
+            )),
             SizedBox(
               height: ResponsiveUnit().height(context, 64),
             ),
-
             gradeDeciderTenth(portfolio),
-
             SizedBox(
               height: ResponsiveUnit().height(context, 64),
             ),
-
             gradeDeciderTwelfth(portfolio),
-
             SizedBox(
               height: ResponsiveUnit().height(context, 64),
             ),
-
             InkWell(
               onTap: () {
-                if(gradeInTenth.isNotEmpty && gradeInTwelfth.isNotEmpty) {
+                if (gradeInTenth.isNotEmpty && gradeInTwelfth.isNotEmpty) {
                   portfolio["gradeInTenth"] = gradeInTenth;
                   portfolio["gradeInTwelfth"] = gradeInTwelfth;
-                  Navigator.pushNamed(context, '/onboarding/comp-exam', arguments: portfolio);
+                  Navigator.pushNamed(context, '/onboarding/comp-exam',
+                      arguments: portfolio);
                 }
               },
               child: Container(
                   width: ResponsiveUnit().width(context, 200),
                   height: ResponsiveUnit().height(context, 85),
                   decoration: BoxDecoration(
-                      color: gradeInTenth.isNotEmpty && gradeInTwelfth.isNotEmpty ? _primaryColour : _secondaryColour,
+                      color:
+                          gradeInTenth.isNotEmpty && gradeInTwelfth.isNotEmpty
+                              ? _primaryColour
+                              : _secondaryColour,
                       borderRadius: BorderRadius.circular(30),
-                      boxShadow: gradeInTenth.isNotEmpty && gradeInTwelfth.isNotEmpty ? [ _boxShadow ] : null,
-                      border: Border.all(color: _primaryColour, width: 3)
-                  ),
+                      boxShadow:
+                          gradeInTenth.isNotEmpty && gradeInTwelfth.isNotEmpty
+                              ? [_boxShadow]
+                              : null,
+                      border: Border.all(color: _primaryColour, width: 3)),
                   child: Center(
                     child: Text(
                       'next!',
                       style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.bold,
-                        color: gradeInTenth.isNotEmpty && gradeInTwelfth.isNotEmpty ? _secondaryColour : _primaryColour,
+                        color:
+                            gradeInTenth.isNotEmpty && gradeInTwelfth.isNotEmpty
+                                ? _secondaryColour
+                                : _primaryColour,
                         fontSize: 20,
                       ),
                     ),
-                  )
-              ),
+                  )),
             )
           ],
         ),
@@ -544,7 +562,7 @@ class _GradeState extends State<Grade> {
   }
 
   Widget gradeDeciderTenth(Map<String, Object> portfolio) {
-    switch(portfolio["boardOfEdInTenth"]) {
+    switch (portfolio["boardOfEdInTenth"]) {
       case "cbse/icse":
         return SizedBox(
           width: ResponsiveUnit().width(context, 1260),
@@ -559,13 +577,11 @@ class _GradeState extends State<Grade> {
                     decorationColor: _primaryColour,
                     fontWeight: FontWeight.normal,
                     fontSize: 36,
-                    color: _primaryColour
-                ),
+                    color: _primaryColour),
               ),
               SizedBox(
                 height: ResponsiveUnit().height(context, 48),
               ),
-
               SizedBox(
                 width: ResponsiveUnit().width(context, 140),
                 height: ResponsiveUnit().height(context, 80),
@@ -579,14 +595,14 @@ class _GradeState extends State<Grade> {
                             hintText: '93',
                             hintStyle: GoogleFonts.montserrat(
                                 decoration: TextDecoration.underline,
-                                decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                decorationColor:
+                                    const BeaconTheme().saturatedPrimaryColour,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 36,
-                                color: const BeaconTheme().saturatedPrimaryColour
-                            ),
+                                color:
+                                    const BeaconTheme().saturatedPrimaryColour),
                             hintMaxLines: 1,
-                            border: InputBorder.none
-                        ),
+                            border: InputBorder.none),
                         keyboardType: TextInputType.number,
                         onChanged: (String inputGradeInTenth) {
                           setState(() {
@@ -598,12 +614,10 @@ class _GradeState extends State<Grade> {
                             decorationColor: _primaryColour,
                             fontWeight: FontWeight.bold,
                             fontSize: 36,
-                            color: _primaryColour
-                        ),
+                            color: _primaryColour),
                         inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.digitsOnly
                         ],
-
                       ),
                     ),
                     Text(
@@ -611,14 +625,11 @@ class _GradeState extends State<Grade> {
                       style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
                           fontSize: 36,
-                          color: const BeaconTheme().saturatedPrimaryColour
-                      ),
+                          color: const BeaconTheme().saturatedPrimaryColour),
                     )
                   ],
                 ),
               ),
-
-
             ],
           ),
         );
@@ -637,13 +648,11 @@ class _GradeState extends State<Grade> {
                     decorationColor: _primaryColour,
                     fontWeight: FontWeight.normal,
                     fontSize: 36,
-                    color: _primaryColour
-                ),
+                    color: _primaryColour),
               ),
               SizedBox(
                 height: ResponsiveUnit().height(context, 48),
               ),
-
               SizedBox(
                 width: ResponsiveUnit().width(context, 140),
                 height: ResponsiveUnit().height(context, 80),
@@ -657,14 +666,14 @@ class _GradeState extends State<Grade> {
                             hintText: '93',
                             hintStyle: GoogleFonts.montserrat(
                                 decoration: TextDecoration.underline,
-                                decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                decorationColor:
+                                    const BeaconTheme().saturatedPrimaryColour,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 36,
-                                color: const BeaconTheme().saturatedPrimaryColour
-                            ),
+                                color:
+                                    const BeaconTheme().saturatedPrimaryColour),
                             hintMaxLines: 1,
-                            border: InputBorder.none
-                        ),
+                            border: InputBorder.none),
                         keyboardType: TextInputType.number,
                         onChanged: (String inputGradeInTenth) {
                           setState(() {
@@ -676,12 +685,10 @@ class _GradeState extends State<Grade> {
                             decorationColor: _primaryColour,
                             fontWeight: FontWeight.bold,
                             fontSize: 36,
-                            color: _primaryColour
-                        ),
+                            color: _primaryColour),
                         inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.digitsOnly
                         ],
-
                       ),
                     ),
                     Text(
@@ -689,14 +696,11 @@ class _GradeState extends State<Grade> {
                       style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
                           fontSize: 36,
-                          color: const BeaconTheme().saturatedPrimaryColour
-                      ),
+                          color: const BeaconTheme().saturatedPrimaryColour),
                     )
                   ],
                 ),
               ),
-
-
             ],
           ),
         );
@@ -715,13 +719,11 @@ class _GradeState extends State<Grade> {
                     decorationColor: _primaryColour,
                     fontWeight: FontWeight.normal,
                     fontSize: 36,
-                    color: _primaryColour
-                ),
+                    color: _primaryColour),
               ),
               SizedBox(
                 height: ResponsiveUnit().height(context, 48),
               ),
-
               SizedBox(
                 width: ResponsiveUnit().width(context, 140),
                 height: ResponsiveUnit().height(context, 80),
@@ -735,14 +737,14 @@ class _GradeState extends State<Grade> {
                             hintText: '93',
                             hintStyle: GoogleFonts.montserrat(
                                 decoration: TextDecoration.underline,
-                                decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                decorationColor:
+                                    const BeaconTheme().saturatedPrimaryColour,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 36,
-                                color: const BeaconTheme().saturatedPrimaryColour
-                            ),
+                                color:
+                                    const BeaconTheme().saturatedPrimaryColour),
                             hintMaxLines: 1,
-                            border: InputBorder.none
-                        ),
+                            border: InputBorder.none),
                         keyboardType: TextInputType.number,
                         onChanged: (String inputGradeInTenth) {
                           setState(() {
@@ -754,12 +756,10 @@ class _GradeState extends State<Grade> {
                             decorationColor: _primaryColour,
                             fontWeight: FontWeight.bold,
                             fontSize: 36,
-                            color: _primaryColour
-                        ),
+                            color: _primaryColour),
                         inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.digitsOnly
                         ],
-
                       ),
                     ),
                     Text(
@@ -767,14 +767,11 @@ class _GradeState extends State<Grade> {
                       style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
                           fontSize: 36,
-                          color: const BeaconTheme().saturatedPrimaryColour
-                      ),
+                          color: const BeaconTheme().saturatedPrimaryColour),
                     )
                   ],
                 ),
               ),
-
-
             ],
           ),
         );
@@ -793,13 +790,11 @@ class _GradeState extends State<Grade> {
                     decorationColor: _primaryColour,
                     fontWeight: FontWeight.normal,
                     fontSize: 36,
-                    color: _primaryColour
-                ),
+                    color: _primaryColour),
               ),
               SizedBox(
                 height: ResponsiveUnit().height(context, 48),
               ),
-
               SizedBox(
                 width: ResponsiveUnit().width(context, 1250),
                 height: ResponsiveUnit().height(context, 80),
@@ -817,18 +812,21 @@ class _GradeState extends State<Grade> {
                         width: ResponsiveUnit().width(context, 125),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: gradeInTenth == "A*" ? _primaryColour : _secondaryColour,
+                            color: gradeInTenth == "A*"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'A*',
                             style: GoogleFonts.montserrat(
-                                color: gradeInTenth == "A*" ? _secondaryColour : _primaryColour,
+                                color: gradeInTenth == "A*"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -843,18 +841,21 @@ class _GradeState extends State<Grade> {
                         width: ResponsiveUnit().width(context, 125),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: gradeInTenth == "A" ? _primaryColour : _secondaryColour,
+                            color: gradeInTenth == "A"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'A',
                             style: GoogleFonts.montserrat(
-                                color: gradeInTenth == "A" ? _secondaryColour : _primaryColour,
+                                color: gradeInTenth == "A"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -869,18 +870,21 @@ class _GradeState extends State<Grade> {
                         width: ResponsiveUnit().width(context, 125),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: gradeInTenth == "B" ? _primaryColour : _secondaryColour,
+                            color: gradeInTenth == "B"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'B',
                             style: GoogleFonts.montserrat(
-                                color: gradeInTenth == "B" ? _secondaryColour : _primaryColour,
+                                color: gradeInTenth == "B"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -895,18 +899,21 @@ class _GradeState extends State<Grade> {
                         width: ResponsiveUnit().width(context, 125),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: gradeInTenth == "C" ? _primaryColour : _secondaryColour,
+                            color: gradeInTenth == "C"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'C',
                             style: GoogleFonts.montserrat(
-                                color: gradeInTenth == "C" ? _secondaryColour : _primaryColour,
+                                color: gradeInTenth == "C"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -921,18 +928,21 @@ class _GradeState extends State<Grade> {
                         width: ResponsiveUnit().width(context, 125),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: gradeInTenth == "D" ? _primaryColour : _secondaryColour,
+                            color: gradeInTenth == "D"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'D',
                             style: GoogleFonts.montserrat(
-                                color: gradeInTenth == "D" ? _secondaryColour : _primaryColour,
+                                color: gradeInTenth == "D"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -947,18 +957,21 @@ class _GradeState extends State<Grade> {
                         width: ResponsiveUnit().width(context, 125),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: gradeInTenth == "E" ? _primaryColour : _secondaryColour,
+                            color: gradeInTenth == "E"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'E',
                             style: GoogleFonts.montserrat(
-                                color: gradeInTenth == "E" ? _secondaryColour : _primaryColour,
+                                color: gradeInTenth == "E"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -973,18 +986,21 @@ class _GradeState extends State<Grade> {
                         width: ResponsiveUnit().width(context, 125),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: gradeInTenth == "U" ? _primaryColour : _secondaryColour,
+                            color: gradeInTenth == "U"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'U',
                             style: GoogleFonts.montserrat(
-                                color: gradeInTenth == "U" ? _secondaryColour : _primaryColour,
+                                color: gradeInTenth == "U"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -992,8 +1008,6 @@ class _GradeState extends State<Grade> {
                   ],
                 ),
               ),
-
-
             ],
           ),
         );
@@ -1004,7 +1018,7 @@ class _GradeState extends State<Grade> {
   }
 
   Widget gradeDeciderTwelfth(Map<String, Object> portfolio) {
-    switch(portfolio["boardOfEdInTwelfth"]) {
+    switch (portfolio["boardOfEdInTwelfth"]) {
       case "cbse/icse":
         return SizedBox(
           width: ResponsiveUnit().width(context, 1260),
@@ -1019,13 +1033,11 @@ class _GradeState extends State<Grade> {
                     decorationColor: _primaryColour,
                     fontWeight: FontWeight.normal,
                     fontSize: 36,
-                    color: _primaryColour
-                ),
+                    color: _primaryColour),
               ),
               SizedBox(
                 height: ResponsiveUnit().height(context, 48),
               ),
-
               SizedBox(
                 width: ResponsiveUnit().width(context, 140),
                 height: ResponsiveUnit().height(context, 80),
@@ -1039,14 +1051,14 @@ class _GradeState extends State<Grade> {
                             hintText: '89',
                             hintStyle: GoogleFonts.montserrat(
                                 decoration: TextDecoration.underline,
-                                decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                decorationColor:
+                                    const BeaconTheme().saturatedPrimaryColour,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 36,
-                                color: const BeaconTheme().saturatedPrimaryColour
-                            ),
+                                color:
+                                    const BeaconTheme().saturatedPrimaryColour),
                             hintMaxLines: 1,
-                            border: InputBorder.none
-                        ),
+                            border: InputBorder.none),
                         keyboardType: TextInputType.number,
                         onChanged: (String inputGradeInTwelfth) {
                           setState(() {
@@ -1058,12 +1070,10 @@ class _GradeState extends State<Grade> {
                             decorationColor: _primaryColour,
                             fontWeight: FontWeight.bold,
                             fontSize: 36,
-                            color: _primaryColour
-                        ),
+                            color: _primaryColour),
                         inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.digitsOnly
                         ],
-
                       ),
                     ),
                     Text(
@@ -1071,14 +1081,11 @@ class _GradeState extends State<Grade> {
                       style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
                           fontSize: 36,
-                          color: const BeaconTheme().saturatedPrimaryColour
-                      ),
+                          color: const BeaconTheme().saturatedPrimaryColour),
                     )
                   ],
                 ),
               ),
-
-
             ],
           ),
         );
@@ -1097,13 +1104,11 @@ class _GradeState extends State<Grade> {
                     decorationColor: _primaryColour,
                     fontWeight: FontWeight.normal,
                     fontSize: 36,
-                    color: _primaryColour
-                ),
+                    color: _primaryColour),
               ),
               SizedBox(
                 height: ResponsiveUnit().height(context, 48),
               ),
-
               SizedBox(
                 width: ResponsiveUnit().width(context, 140),
                 height: ResponsiveUnit().height(context, 80),
@@ -1117,14 +1122,14 @@ class _GradeState extends State<Grade> {
                             hintText: '89',
                             hintStyle: GoogleFonts.montserrat(
                                 decoration: TextDecoration.underline,
-                                decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                decorationColor:
+                                    const BeaconTheme().saturatedPrimaryColour,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 36,
-                                color: const BeaconTheme().saturatedPrimaryColour
-                            ),
+                                color:
+                                    const BeaconTheme().saturatedPrimaryColour),
                             hintMaxLines: 1,
-                            border: InputBorder.none
-                        ),
+                            border: InputBorder.none),
                         keyboardType: TextInputType.number,
                         onChanged: (String inputGradeInTwelfth) {
                           setState(() {
@@ -1136,12 +1141,10 @@ class _GradeState extends State<Grade> {
                             decorationColor: _primaryColour,
                             fontWeight: FontWeight.bold,
                             fontSize: 36,
-                            color: _primaryColour
-                        ),
+                            color: _primaryColour),
                         inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.digitsOnly
                         ],
-
                       ),
                     ),
                     Text(
@@ -1149,14 +1152,13 @@ class _GradeState extends State<Grade> {
                       style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
                           fontSize: 36,
-                          color: gradeInTwelfth.isNotEmpty ? _primaryColour : const BeaconTheme().saturatedPrimaryColour
-                      ),
+                          color: gradeInTwelfth.isNotEmpty
+                              ? _primaryColour
+                              : const BeaconTheme().saturatedPrimaryColour),
                     )
                   ],
                 ),
               ),
-
-
             ],
           ),
         );
@@ -1178,13 +1180,11 @@ class _GradeState extends State<Grade> {
                     decorationColor: _primaryColour,
                     fontWeight: FontWeight.normal,
                     fontSize: 36,
-                    color: _primaryColour
-                ),
+                    color: _primaryColour),
               ),
               SizedBox(
                 height: ResponsiveUnit().height(context, 48),
               ),
-
               SizedBox(
                 width: ResponsiveUnit().width(context, 1250),
                 height: ResponsiveUnit().height(context, 80),
@@ -1202,18 +1202,21 @@ class _GradeState extends State<Grade> {
                         width: ResponsiveUnit().width(context, 125),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: gradeInTwelfth == "A*" ? _primaryColour : _secondaryColour,
+                            color: gradeInTwelfth == "A*"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'A*',
                             style: GoogleFonts.montserrat(
-                                color: gradeInTwelfth == "A*" ? _secondaryColour : _primaryColour,
+                                color: gradeInTwelfth == "A*"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -1228,18 +1231,21 @@ class _GradeState extends State<Grade> {
                         width: ResponsiveUnit().width(context, 125),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: gradeInTwelfth == "A" ? _primaryColour : _secondaryColour,
+                            color: gradeInTwelfth == "A"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'A',
                             style: GoogleFonts.montserrat(
-                                color: gradeInTwelfth == "A" ? _secondaryColour : _primaryColour,
+                                color: gradeInTwelfth == "A"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -1254,18 +1260,21 @@ class _GradeState extends State<Grade> {
                         width: ResponsiveUnit().width(context, 125),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: gradeInTwelfth == "B" ? _primaryColour : _secondaryColour,
+                            color: gradeInTwelfth == "B"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'B',
                             style: GoogleFonts.montserrat(
-                                color: gradeInTwelfth == "B" ? _secondaryColour : _primaryColour,
+                                color: gradeInTwelfth == "B"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -1280,18 +1289,21 @@ class _GradeState extends State<Grade> {
                         width: ResponsiveUnit().width(context, 125),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: gradeInTwelfth == "C" ? _primaryColour : _secondaryColour,
+                            color: gradeInTwelfth == "C"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'C',
                             style: GoogleFonts.montserrat(
-                                color: gradeInTwelfth == "C" ? _secondaryColour : _primaryColour,
+                                color: gradeInTwelfth == "C"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -1306,18 +1318,21 @@ class _GradeState extends State<Grade> {
                         width: ResponsiveUnit().width(context, 125),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: gradeInTwelfth == "D" ? _primaryColour : _secondaryColour,
+                            color: gradeInTwelfth == "D"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'D',
                             style: GoogleFonts.montserrat(
-                                color: gradeInTwelfth == "D" ? _secondaryColour : _primaryColour,
+                                color: gradeInTwelfth == "D"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -1332,18 +1347,21 @@ class _GradeState extends State<Grade> {
                         width: ResponsiveUnit().width(context, 125),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: gradeInTwelfth == "E" ? _primaryColour : _secondaryColour,
+                            color: gradeInTwelfth == "E"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'E',
                             style: GoogleFonts.montserrat(
-                                color: gradeInTwelfth == "E" ? _secondaryColour : _primaryColour,
+                                color: gradeInTwelfth == "E"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -1358,18 +1376,21 @@ class _GradeState extends State<Grade> {
                         width: ResponsiveUnit().width(context, 125),
                         height: ResponsiveUnit().height(context, 70),
                         decoration: BoxDecoration(
-                            color: gradeInTwelfth == "U" ? _primaryColour : _secondaryColour,
+                            color: gradeInTwelfth == "U"
+                                ? _primaryColour
+                                : _secondaryColour,
                             borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: _primaryColour, width: 3)
-                        ),
+                            border:
+                                Border.all(color: _primaryColour, width: 3)),
                         child: Center(
                           child: Text(
                             'U',
                             style: GoogleFonts.montserrat(
-                                color: gradeInTwelfth == "U" ? _secondaryColour : _primaryColour,
+                                color: gradeInTwelfth == "U"
+                                    ? _secondaryColour
+                                    : _primaryColour,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -1377,8 +1398,6 @@ class _GradeState extends State<Grade> {
                   ],
                 ),
               ),
-
-
             ],
           ),
         );
@@ -1394,18 +1413,16 @@ class CompExam extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _CompExamState();
-
 }
 
 class _CompExamState extends State<CompExam> {
-
   int scoreInSat = 0;
   int scoreInAct = 0;
 
   @override
   Widget build(BuildContext context) {
-
-    final portfolio = ModalRoute.of(context)?.settings.arguments as Map<String, Object?>;
+    final portfolio =
+        ModalRoute.of(context)?.settings.arguments as Map<String, Object?>;
 
     return Scaffold(
       backgroundColor: _secondaryColour,
@@ -1416,32 +1433,28 @@ class _CompExamState extends State<CompExam> {
           children: [
             Center(
                 child: Text(
-                  'creating your college list',
-                  style: GoogleFonts.montserrat(
-                      color: _primaryColour,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 36
-                  ),
-                  textAlign: TextAlign.center,
-                )
-            ),
+              'creating your college list',
+              style: GoogleFonts.montserrat(
+                  color: _primaryColour,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 36),
+              textAlign: TextAlign.center,
+            )),
             SizedBox(
               height: ResponsiveUnit().height(context, 48),
             ),
             Center(
                 child: SizedBox(
-                  height: ResponsiveUnit().height(context, 20),
-                  child: LinearProgressIndicator(
-                    borderRadius: BorderRadius.circular(10),
-                    value: _compExamPageNum/_totalNumberOfPages,
-                    backgroundColor: const BeaconTheme().saturatedPrimaryColour,
-                  ),
-                )
-            ),
+              height: ResponsiveUnit().height(context, 20),
+              child: LinearProgressIndicator(
+                borderRadius: BorderRadius.circular(10),
+                value: _compExamPageNum / _totalNumberOfPages,
+                backgroundColor: const BeaconTheme().saturatedPrimaryColour,
+              ),
+            )),
             SizedBox(
               height: ResponsiveUnit().height(context, 64),
             ),
-
             SizedBox(
               width: ResponsiveUnit().width(context, 1260),
               height: ResponsiveUnit().height(context, 470),
@@ -1455,8 +1468,7 @@ class _CompExamState extends State<CompExam> {
                         decorationColor: _primaryColour,
                         fontWeight: FontWeight.normal,
                         fontSize: 36,
-                        color: _primaryColour
-                    ),
+                        color: _primaryColour),
                   ),
                   SizedBox(
                     height: ResponsiveUnit().height(context, 12),
@@ -1474,14 +1486,14 @@ class _CompExamState extends State<CompExam> {
                                 hintText: '1450',
                                 hintStyle: GoogleFonts.montserrat(
                                     decoration: TextDecoration.underline,
-                                    decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                    decorationColor: const BeaconTheme()
+                                        .saturatedPrimaryColour,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 36,
-                                    color: const BeaconTheme().saturatedPrimaryColour
-                                ),
+                                    color: const BeaconTheme()
+                                        .saturatedPrimaryColour),
                                 hintMaxLines: 1,
-                                border: InputBorder.none
-                            ),
+                                border: InputBorder.none),
                             keyboardType: TextInputType.number,
                             onChanged: (String inputScoreInSat) {
                               setState(() {
@@ -1493,12 +1505,10 @@ class _CompExamState extends State<CompExam> {
                                 decorationColor: _primaryColour,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 36,
-                                color: _primaryColour
-                            ),
+                                color: _primaryColour),
                             inputFormatters: <TextInputFormatter>[
                               FilteringTextInputFormatter.digitsOnly
                             ],
-
                           ),
                         ),
                         Text(
@@ -1506,13 +1516,12 @@ class _CompExamState extends State<CompExam> {
                           style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.bold,
                               fontSize: 36,
-                              color: const BeaconTheme().saturatedPrimaryColour
-                          ),
+                              color:
+                                  const BeaconTheme().saturatedPrimaryColour),
                         )
                       ],
                     ),
                   ),
-
                   Text(
                     'act',
                     style: GoogleFonts.montserrat(
@@ -1520,8 +1529,7 @@ class _CompExamState extends State<CompExam> {
                         decorationColor: _primaryColour,
                         fontWeight: FontWeight.normal,
                         fontSize: 36,
-                        color: _primaryColour
-                    ),
+                        color: _primaryColour),
                   ),
                   SizedBox(
                     height: ResponsiveUnit().height(context, 48),
@@ -1539,14 +1547,14 @@ class _CompExamState extends State<CompExam> {
                                 hintText: '24',
                                 hintStyle: GoogleFonts.montserrat(
                                     decoration: TextDecoration.underline,
-                                    decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                    decorationColor: const BeaconTheme()
+                                        .saturatedPrimaryColour,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 36,
-                                    color: const BeaconTheme().saturatedPrimaryColour
-                                ),
+                                    color: const BeaconTheme()
+                                        .saturatedPrimaryColour),
                                 hintMaxLines: 1,
-                                border: InputBorder.none
-                            ),
+                                border: InputBorder.none),
                             keyboardType: TextInputType.number,
                             onChanged: (String inputScoreInAct) {
                               setState(() {
@@ -1558,12 +1566,10 @@ class _CompExamState extends State<CompExam> {
                                 decorationColor: _primaryColour,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 36,
-                                color: _primaryColour
-                            ),
+                                color: _primaryColour),
                             inputFormatters: <TextInputFormatter>[
                               FilteringTextInputFormatter.digitsOnly
                             ],
-
                           ),
                         ),
                         Text(
@@ -1571,8 +1577,8 @@ class _CompExamState extends State<CompExam> {
                           style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.bold,
                               fontSize: 36,
-                              color: const BeaconTheme().saturatedPrimaryColour
-                          ),
+                              color:
+                                  const BeaconTheme().saturatedPrimaryColour),
                         )
                       ],
                     ),
@@ -1580,46 +1586,48 @@ class _CompExamState extends State<CompExam> {
                 ],
               ),
             ),
-
             SizedBox(
               height: ResponsiveUnit().height(context, 64),
             ),
-
             InkWell(
               onTap: () {
-                if(scoreInSat != 0 || scoreInAct != 0) {
+                if (scoreInSat != 0 || scoreInAct != 0) {
                   portfolio["scoreInSat"] = scoreInSat;
                   portfolio["scoreInAct"] = scoreInAct;
-                  Navigator.pushNamed(context, '/onboarding/english-exam', arguments: portfolio);
+                  Navigator.pushNamed(context, '/onboarding/english-exam',
+                      arguments: portfolio);
                 }
               },
               child: Container(
                   width: ResponsiveUnit().width(context, 200),
                   height: ResponsiveUnit().height(context, 85),
                   decoration: BoxDecoration(
-                      color: scoreInSat != 0 || scoreInAct != 0 ? _primaryColour : _secondaryColour,
+                      color: scoreInSat != 0 || scoreInAct != 0
+                          ? _primaryColour
+                          : _secondaryColour,
                       borderRadius: BorderRadius.circular(30),
-                      boxShadow: scoreInSat != 0 || scoreInAct != 0 ? [ _boxShadow ] : null,
-                      border: Border.all(color: _primaryColour, width: 3)
-                  ),
+                      boxShadow: scoreInSat != 0 || scoreInAct != 0
+                          ? [_boxShadow]
+                          : null,
+                      border: Border.all(color: _primaryColour, width: 3)),
                   child: Center(
                     child: Text(
                       'next!',
                       style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.bold,
-                        color: scoreInSat != 0 || scoreInAct != 0 ? _secondaryColour : _primaryColour,
+                        color: scoreInSat != 0 || scoreInAct != 0
+                            ? _secondaryColour
+                            : _primaryColour,
                         fontSize: 20,
                       ),
                     ),
-                  )
-              ),
+                  )),
             )
           ],
         ),
       ),
     );
   }
-
 }
 
 class EnglishExam extends StatefulWidget {
@@ -1630,14 +1638,13 @@ class EnglishExam extends StatefulWidget {
 }
 
 class _EnglishExamState extends State<EnglishExam> {
-
   int scoreInToefl = 0;
   double scoreInIelts = 0;
 
   @override
   Widget build(BuildContext context) {
-
-    final portfolio = ModalRoute.of(context)?.settings.arguments as Map<String, Object>;
+    final portfolio =
+        ModalRoute.of(context)?.settings.arguments as Map<String, Object>;
 
     return Scaffold(
       backgroundColor: _secondaryColour,
@@ -1648,32 +1655,28 @@ class _EnglishExamState extends State<EnglishExam> {
           children: [
             Center(
                 child: Text(
-                  'creating your college list',
-                  style: GoogleFonts.montserrat(
-                      color: _primaryColour,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 36
-                  ),
-                  textAlign: TextAlign.center,
-                )
-            ),
+              'creating your college list',
+              style: GoogleFonts.montserrat(
+                  color: _primaryColour,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 36),
+              textAlign: TextAlign.center,
+            )),
             SizedBox(
               height: ResponsiveUnit().height(context, 48),
             ),
             Center(
                 child: SizedBox(
-                  height: ResponsiveUnit().height(context, 20),
-                  child: LinearProgressIndicator(
-                    borderRadius: BorderRadius.circular(10),
-                    value: _englishExamPageNum/_totalNumberOfPages,
-                    backgroundColor: const BeaconTheme().saturatedPrimaryColour,
-                  ),
-                )
-            ),
+              height: ResponsiveUnit().height(context, 20),
+              child: LinearProgressIndicator(
+                borderRadius: BorderRadius.circular(10),
+                value: _englishExamPageNum / _totalNumberOfPages,
+                backgroundColor: const BeaconTheme().saturatedPrimaryColour,
+              ),
+            )),
             SizedBox(
               height: ResponsiveUnit().height(context, 64),
             ),
-
             SizedBox(
               width: ResponsiveUnit().width(context, 1260),
               height: ResponsiveUnit().height(context, 470),
@@ -1687,8 +1690,7 @@ class _EnglishExamState extends State<EnglishExam> {
                         decorationColor: _primaryColour,
                         fontWeight: FontWeight.normal,
                         fontSize: 36,
-                        color: _primaryColour
-                    ),
+                        color: _primaryColour),
                   ),
                   SizedBox(
                     height: ResponsiveUnit().height(context, 12),
@@ -1706,14 +1708,14 @@ class _EnglishExamState extends State<EnglishExam> {
                                 hintText: '87',
                                 hintStyle: GoogleFonts.montserrat(
                                     decoration: TextDecoration.underline,
-                                    decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                    decorationColor: const BeaconTheme()
+                                        .saturatedPrimaryColour,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 36,
-                                    color: const BeaconTheme().saturatedPrimaryColour
-                                ),
+                                    color: const BeaconTheme()
+                                        .saturatedPrimaryColour),
                                 hintMaxLines: 1,
-                                border: InputBorder.none
-                            ),
+                                border: InputBorder.none),
                             keyboardType: TextInputType.number,
                             onChanged: (String inputScoreInToefl) {
                               setState(() {
@@ -1725,12 +1727,10 @@ class _EnglishExamState extends State<EnglishExam> {
                                 decorationColor: _primaryColour,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 36,
-                                color: _primaryColour
-                            ),
+                                color: _primaryColour),
                             inputFormatters: <TextInputFormatter>[
                               FilteringTextInputFormatter.digitsOnly
                             ],
-
                           ),
                         ),
                         Text(
@@ -1738,13 +1738,12 @@ class _EnglishExamState extends State<EnglishExam> {
                           style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.bold,
                               fontSize: 36,
-                              color: const BeaconTheme().saturatedPrimaryColour
-                          ),
+                              color:
+                                  const BeaconTheme().saturatedPrimaryColour),
                         )
                       ],
                     ),
                   ),
-
                   Text(
                     'ielts',
                     style: GoogleFonts.montserrat(
@@ -1752,8 +1751,7 @@ class _EnglishExamState extends State<EnglishExam> {
                         decorationColor: _primaryColour,
                         fontWeight: FontWeight.normal,
                         fontSize: 36,
-                        color: _primaryColour
-                    ),
+                        color: _primaryColour),
                   ),
                   SizedBox(
                     height: ResponsiveUnit().height(context, 48),
@@ -1771,16 +1769,17 @@ class _EnglishExamState extends State<EnglishExam> {
                                 hintText: '8.5',
                                 hintStyle: GoogleFonts.montserrat(
                                     decoration: TextDecoration.underline,
-                                    decorationColor: const BeaconTheme().saturatedPrimaryColour,
+                                    decorationColor: const BeaconTheme()
+                                        .saturatedPrimaryColour,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 36,
-                                    color: const BeaconTheme().saturatedPrimaryColour
-                                ),
+                                    color: const BeaconTheme()
+                                        .saturatedPrimaryColour),
                                 hintMaxLines: 1,
-                                border: InputBorder.none
-                            ),
+                                border: InputBorder.none),
                             // todo: allow decimal
-                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                            keyboardType: const TextInputType.numberWithOptions(
+                                decimal: true),
                             onChanged: (String inputScoreInIelts) {
                               setState(() {
                                 scoreInIelts = double.parse(inputScoreInIelts);
@@ -1791,12 +1790,10 @@ class _EnglishExamState extends State<EnglishExam> {
                                 decorationColor: _primaryColour,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 36,
-                                color: _primaryColour
-                            ),
+                                color: _primaryColour),
                             inputFormatters: <TextInputFormatter>[
                               FilteringTextInputFormatter.digitsOnly
                             ],
-
                           ),
                         ),
                         Text(
@@ -1804,8 +1801,8 @@ class _EnglishExamState extends State<EnglishExam> {
                           style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.bold,
                               fontSize: 36,
-                              color: const BeaconTheme().saturatedPrimaryColour
-                          ),
+                              color:
+                                  const BeaconTheme().saturatedPrimaryColour),
                         )
                       ],
                     ),
@@ -1813,30 +1810,28 @@ class _EnglishExamState extends State<EnglishExam> {
                 ],
               ),
             ),
-
             SizedBox(
               height: ResponsiveUnit().height(context, 64),
             ),
-
             InkWell(
               onTap: () {
-                if(scoreInToefl != 0 || scoreInIelts != 0) {
+                if (scoreInToefl != 0 || scoreInIelts != 0) {
                   portfolio["scoreInToefl"] = scoreInToefl;
                   portfolio["scoreInIelts"] = scoreInIelts;
 
-                  PortfolioApi().insertPortfolio(
-                    Portfolio(
-                      Auth().getUserId() as String,
-                      portfolio["boardOfEdInTenth"] as String,
-                      portfolio["boardOfEdInTwelfth"] as String,
-                      portfolio["gradeInTenth"] as String,
-                      portfolio["gradeInTwelfth"] as String,
-                      portfolio["scoreInSat"] as int,
-                      portfolio["scoreInAct"] as int,
-                      portfolio["scoreInToefl"] as int,
-                      portfolio["scoreInIelts"] as double,
-                    )
-                  ).then((_) {
+                  PortfolioApi()
+                      .insertPortfolio(Portfolio(
+                    Auth().getUserId() as String,
+                    portfolio["boardOfEdInTenth"] as String,
+                    portfolio["boardOfEdInTwelfth"] as String,
+                    portfolio["gradeInTenth"] as String,
+                    portfolio["gradeInTwelfth"] as String,
+                    portfolio["scoreInSat"] as int,
+                    portfolio["scoreInAct"] as int,
+                    portfolio["scoreInToefl"] as int,
+                    portfolio["scoreInIelts"] as double,
+                  ))
+                      .then((_) {
                     print("success");
                   }).catchError((e) {
                     print(e);
@@ -1849,22 +1844,26 @@ class _EnglishExamState extends State<EnglishExam> {
                   width: ResponsiveUnit().width(context, 200),
                   height: ResponsiveUnit().height(context, 85),
                   decoration: BoxDecoration(
-                      color: scoreInToefl != 0 || scoreInIelts != 0 ? _primaryColour : _secondaryColour,
+                      color: scoreInToefl != 0 || scoreInIelts != 0
+                          ? _primaryColour
+                          : _secondaryColour,
                       borderRadius: BorderRadius.circular(30),
-                      boxShadow: scoreInToefl != 0 || scoreInIelts != 0 ? [ _boxShadow ] : null,
-                      border: Border.all(color: _primaryColour, width: 3)
-                  ),
+                      boxShadow: scoreInToefl != 0 || scoreInIelts != 0
+                          ? [_boxShadow]
+                          : null,
+                      border: Border.all(color: _primaryColour, width: 3)),
                   child: Center(
                     child: Text(
                       'next!',
                       style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.bold,
-                        color: scoreInToefl != 0 || scoreInIelts != 0 ? _secondaryColour : _primaryColour,
+                        color: scoreInToefl != 0 || scoreInIelts != 0
+                            ? _secondaryColour
+                            : _primaryColour,
                         fontSize: 20,
                       ),
                     ),
-                  )
-              ),
+                  )),
             )
           ],
         ),
