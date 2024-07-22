@@ -9,6 +9,8 @@ class BeaconTheme {
 
   get secondaryColour => const Color(0xffFFE8CD);
 
+  // 0xffFFEFDC
+
   get saturatedPrimaryColour => const Color(0xff877B97);
 
   get shadowColour => const Color(0xffDBC7BD);

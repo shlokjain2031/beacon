@@ -17,8 +17,10 @@ class PortfolioApi {
         'grade_in_twelfth' : portfolio.gradeInTwelfth,
         'score_in_sat' : portfolio.scoreInSat,
         'score_in_act' : portfolio.scoreInAct,
-        'score_in_toefl' : portfolio.scoreInToefl,
-        'score_in_ielts' : portfolio.scoreInIelts
+        'essay' : portfolio.essay,
+        'passion_project' : portfolio.passionProject,
+        'sports' : portfolio.sports,
+        'awards' : portfolio.awards
       }
     );
   }

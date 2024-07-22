@@ -1,5 +1,5 @@
 class Portfolio {
-  Portfolio(this.userId, this.boardOfEdInTenth, this.boardOfEdInTwelfth, this.gradeInTenth, this.gradeInTwelfth, this.scoreInSat, this.scoreInAct, this.scoreInToefl, this.scoreInIelts);
+  Portfolio(this.userId, this.boardOfEdInTenth, this.boardOfEdInTwelfth, this.gradeInTenth, this.gradeInTwelfth, this.scoreInSat, this.scoreInAct, this.essay, this.passionProject, this.sports, this.awards);
 
   final String userId;
   late String boardOfEdInTenth;
@@ -8,7 +8,8 @@ class Portfolio {
   final String gradeInTwelfth;
   final int scoreInSat;
   final int scoreInAct;
-  final int scoreInToefl;
-  final double scoreInIelts;
-
+  final double essay;
+  final String passionProject;
+  final String sports;
+  final String awards;
 }
