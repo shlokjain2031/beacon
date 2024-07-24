@@ -15,32 +15,23 @@ async function startServer() {
 
                 const { essayPrompt } = await req.json()
 
-                let data = {
-                  essayScore: `3.0`,
-                }
-
                 const genAI = new GoogleGenerativeAI(API_KEY);
 
                 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"}, "error");
 
-                async function run() {
+                const result = await model.generateContent(`${ essayPrompt }`);
+                const response = await result.response;
 
-                  const result = await model.generateContent(`${ essayPrompt }`);
-                  const response = await result.response;
+                console.log(`response: ${response}`);
 
-                  console.log(response);
+                const text = response.text();
+                console.log(`text: ${text}`);
 
-                  const text = response.text();
-                  console.log(text);
+                const data = {
+                  essayScore : `${ text }`
+                };
 
-                  data = {
-                    essayScore : `${ text }`
-                  };
-                }
-
-                run();
-
-                console.log(data);
+                console.log(`score: ${data.essayScore}`);
 
                 return new Response(JSON.stringify(data), { headers: { 'Content-Type': 'application/json'} })
             }, { port })

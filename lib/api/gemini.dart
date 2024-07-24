@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -8,8 +10,8 @@ class GeminiApi {
 
     await dotenv.load(fileName: "SUPABASE_API_KEY.env");
 
-    String essayRating = await supabase.functions.invoke(
-      'gemini-api',
+    return await supabase.functions.invoke(
+      'essay-prompt',
       headers: {
         "Authorization": "Bearer ${dotenv.env['SUPABASE_API_KEY'] as String}",
         "content-type": "application/json"
@@ -18,14 +20,12 @@ class GeminiApi {
         "essayPrompt" : essayPrmopt
       },
     ).then((response) {
-      return response.data;
+      Map<dynamic, dynamic> map = Map.from(response.data);; // import 'dart:convert';
+      print("essayScore: ${map["essayScore"]}");
+      return map["essayScore"];
     }).catchError((e) {
       print(e);
     });
-
-    print(essayRating);
-
-    return essayRating;
   }
 
 // todo: safety reach list

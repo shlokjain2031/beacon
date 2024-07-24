@@ -1811,11 +1811,7 @@ class _ExtraCurricularState extends State<ExtraCurricular> {
   @override
   Widget build(BuildContext context) {
 
-    // final portfolio = ModalRoute.of(context)?.settings.arguments as Map<String, Object>;
-
-    final portfolio = {
-      "essay" : "fuck you"
-    };
+    final portfolio = ModalRoute.of(context)?.settings.arguments as Map<String, Object>;
 
     return Scaffold(
       backgroundColor: _secondaryColour,
@@ -2029,8 +2025,8 @@ class _ExtraCurricularState extends State<ExtraCurricular> {
                       portfolio["gradeInTwelfth"] as String,
                       portfolio["scoreInSat"] as int,
                       portfolio["scoreInAct"] as int,
-                      portfolio["essay"] as String,
-                      portfolio["passionProject"] as String,
+                      portfolio["essay_score"] as String,
+                      portfolio["passion_project"] as String,
                       portfolio["sports"] as String,
                       portfolio["awards"] as String
                     )
