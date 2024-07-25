@@ -8,7 +8,7 @@ class Portfolio {
   final String gradeInTwelfth;
   final int scoreInSat;
   final int scoreInAct;
-  final double essay;
+  final String essay;
   final String passionProject;
   final String sports;
   final String awards;

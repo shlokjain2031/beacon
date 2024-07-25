@@ -1,23 +1,32 @@
-import 'package:beacon/model/portfolio.dart';
+import 'dart:convert';
+
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class GeminiApi {
   final supabase = Supabase.instance.client;
 
-  Future<double> getEssayRating(Portfolio portfolio) async {
+  Future<String> getEssayRating(String essayPrmopt) async {
+
+    await dotenv.load(fileName: "SUPABASE_API_KEY.env");
+
     return await supabase.functions.invoke(
-      'gemini-api',
+      'essay-prompt',
       headers: {
-        "Authorization": "ACCESS_TOKEN",
+        "Authorization": "Bearer ${dotenv.env['SUPABASE_API_KEY'] as String}",
         "content-type": "application/json"
       },
       body: {
-        // todo: include the essay
+        "essayPrompt" : essayPrmopt
       },
     ).then((response) {
-      return response.data;
+      Map<dynamic, dynamic> map = Map.from(response.data);; // import 'dart:convert';
+      print("essayScore: ${map["essayScore"]}");
+      return map["essayScore"];
+    }).catchError((e) {
+      print(e);
     });
   }
 
-  // todo: safety reach list
+// todo: safety reach list
 }

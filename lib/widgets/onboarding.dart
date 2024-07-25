@@ -2,6 +2,7 @@ import 'dart:core';
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:beacon/api/gemini.dart';
 import 'package:beacon/api/portfolio.dart';
 import 'package:beacon/model/auth.dart';
 import 'package:beacon/model/portfolio.dart';
@@ -170,22 +171,22 @@ class _BoardOfEdState extends State<BoardOfEd> {
                       InkWell(
                         onTap: () {
                           setState(() {
-                            boardOfEdInTenth = "cbse/icse";
+                            boardOfEdInTenth = "CBSE/ICSE";
                           });
                         },
                         child: Container(
                           width: ResponsiveUnit().width(context, 200),
                           height: ResponsiveUnit().height(context, 70),
                           decoration: BoxDecoration(
-                              color: boardOfEdInTenth == "cbse/icse" ? _primaryColour : _secondaryColour,
+                              color: boardOfEdInTenth == "CBSE/ICSE" ? _primaryColour : _secondaryColour,
                               borderRadius: BorderRadius.circular(30),
                               border: Border.all(color: _primaryColour, width: 3)
                           ),
                           child: Center(
                             child: Text(
-                              'cbse/icse',
+                              'CBSE/ICSE',
                               style: GoogleFonts.montserrat(
-                                  color: boardOfEdInTenth == "cbse/icse" ? _secondaryColour : _primaryColour,
+                                  color: boardOfEdInTenth == "CBSE/ICSE" ? _secondaryColour : _primaryColour,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold
                               ),
@@ -196,22 +197,22 @@ class _BoardOfEdState extends State<BoardOfEd> {
                       InkWell(
                         onTap: () {
                           setState(() {
-                            boardOfEdInTenth = "state";
+                            boardOfEdInTenth = "State";
                           });
                         },
                         child: Container(
                           width: ResponsiveUnit().width(context, 200),
                           height: ResponsiveUnit().height(context, 70),
                           decoration: BoxDecoration(
-                              color: boardOfEdInTenth == "state" ? _primaryColour : _secondaryColour,
+                              color: boardOfEdInTenth == "State" ? _primaryColour : _secondaryColour,
                               borderRadius: BorderRadius.circular(30),
                               border: Border.all(color: _primaryColour, width: 3)
                           ),
                           child: Center(
                             child: Text(
-                              'state',
+                              'State',
                               style: GoogleFonts.montserrat(
-                                  color: boardOfEdInTenth == "state" ? _secondaryColour : _primaryColour,
+                                  color: boardOfEdInTenth == "State" ? _secondaryColour : _primaryColour,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold
                               ),
@@ -222,22 +223,22 @@ class _BoardOfEdState extends State<BoardOfEd> {
                       InkWell(
                         onTap: () {
                           setState(() {
-                            boardOfEdInTenth = "open schooling";
+                            boardOfEdInTenth = "Open Schooling";
                           });
                         },
                         child: Container(
                           width: ResponsiveUnit().width(context, 200),
                           height: ResponsiveUnit().height(context, 70),
                           decoration: BoxDecoration(
-                              color: boardOfEdInTenth == "open schooling" ? _primaryColour : _secondaryColour,
+                              color: boardOfEdInTenth == "Open Schooling" ? _primaryColour : _secondaryColour,
                               borderRadius: BorderRadius.circular(30),
                               border: Border.all(color: _primaryColour, width: 3)
                           ),
                           child: Center(
                             child: Text(
-                              'open schooling',
+                              'Open Schooling',
                               style: GoogleFonts.montserrat(
-                                  color: boardOfEdInTenth == "open schooling" ? _secondaryColour : _primaryColour,
+                                  color: boardOfEdInTenth == "Open Schooling" ? _secondaryColour : _primaryColour,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold
                               ),
@@ -297,22 +298,22 @@ class _BoardOfEdState extends State<BoardOfEd> {
                       InkWell(
                         onTap: () {
                           setState(() {
-                            boardOfEdInTwelfth = "cbse/icse";
+                            boardOfEdInTwelfth = "CBSE/ICSE";
                           });
                         },
                         child: Container(
                           width: ResponsiveUnit().width(context, 200),
                           height: ResponsiveUnit().height(context, 70),
                           decoration: BoxDecoration(
-                              color: boardOfEdInTwelfth == "cbse/icse" ? _primaryColour : _secondaryColour,
+                              color: boardOfEdInTwelfth == "CBSE/ICSE" ? _primaryColour : _secondaryColour,
                               borderRadius: BorderRadius.circular(30),
                               border: Border.all(color: _primaryColour, width: 3)
                           ),
                           child: Center(
                             child: Text(
-                              'cbse/icse',
+                              'CBSE/ICSE',
                               style: GoogleFonts.montserrat(
-                                  color: boardOfEdInTwelfth == "cbse/icse" ? _secondaryColour : _primaryColour,
+                                  color: boardOfEdInTwelfth == "CBSE/ICSE" ? _secondaryColour : _primaryColour,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold
                               ),
@@ -323,22 +324,22 @@ class _BoardOfEdState extends State<BoardOfEd> {
                       InkWell(
                         onTap: () {
                           setState(() {
-                            boardOfEdInTwelfth = "state";
+                            boardOfEdInTwelfth = "State";
                           });
                         },
                         child: Container(
                           width: ResponsiveUnit().width(context, 200),
                           height: ResponsiveUnit().height(context, 70),
                           decoration: BoxDecoration(
-                              color: boardOfEdInTwelfth == "state" ? _primaryColour : _secondaryColour,
+                              color: boardOfEdInTwelfth == "State" ? _primaryColour : _secondaryColour,
                               borderRadius: BorderRadius.circular(30),
                               border: Border.all(color: _primaryColour, width: 3)
                           ),
                           child: Center(
                             child: Text(
-                              'state',
+                              'State',
                               style: GoogleFonts.montserrat(
-                                  color: boardOfEdInTwelfth == "state" ? _secondaryColour : _primaryColour,
+                                  color: boardOfEdInTwelfth == "State" ? _secondaryColour : _primaryColour,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold
                               ),
@@ -349,22 +350,22 @@ class _BoardOfEdState extends State<BoardOfEd> {
                       InkWell(
                         onTap: () {
                           setState(() {
-                            boardOfEdInTwelfth = "ib";
+                            boardOfEdInTwelfth = "IB";
                           });
                         },
                         child: Container(
                           width: ResponsiveUnit().width(context, 200),
                           height: ResponsiveUnit().height(context, 70),
                           decoration: BoxDecoration(
-                              color: boardOfEdInTwelfth == "ib" ? _primaryColour : _secondaryColour,
+                              color: boardOfEdInTwelfth == "IB" ? _primaryColour : _secondaryColour,
                               borderRadius: BorderRadius.circular(30),
                               border: Border.all(color: _primaryColour, width: 3)
                           ),
                           child: Center(
                             child: Text(
-                              'ib',
+                              'IB',
                               style: GoogleFonts.montserrat(
-                                  color: boardOfEdInTwelfth == "ib" ? _secondaryColour : _primaryColour,
+                                  color: boardOfEdInTwelfth == "IB" ? _secondaryColour : _primaryColour,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold
                               ),
@@ -564,7 +565,7 @@ class _GradeState extends State<Grade> {
 
   Widget gradeDeciderTenth(Map<String, Object> portfolio) {
     switch(portfolio["boardOfEdInTenth"]) {
-      case "cbse/icse":
+      case "CBSE/ICSE":
         return SizedBox(
           width: ResponsiveUnit().width(context, 1260),
           height: ResponsiveUnit().height(context, 220),
@@ -642,7 +643,7 @@ class _GradeState extends State<Grade> {
           ),
         );
 
-      case "state":
+      case "State":
         return SizedBox(
           width: ResponsiveUnit().width(context, 1260),
           height: ResponsiveUnit().height(context, 220),
@@ -720,7 +721,7 @@ class _GradeState extends State<Grade> {
           ),
         );
 
-      case "open schooling":
+      case "Open Schooling":
         return SizedBox(
           width: ResponsiveUnit().width(context, 1260),
           height: ResponsiveUnit().height(context, 220),
@@ -824,7 +825,7 @@ class _GradeState extends State<Grade> {
                 height: ResponsiveUnit().height(context, 80),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     InkWell(
                       onTap: () {
@@ -1024,7 +1025,7 @@ class _GradeState extends State<Grade> {
 
   Widget gradeDeciderTwelfth(Map<String, Object> portfolio) {
     switch(portfolio["boardOfEdInTwelfth"]) {
-      case "cbse/icse":
+      case "CBSE/ICSE":
         return SizedBox(
           width: ResponsiveUnit().width(context, 1260),
           height: ResponsiveUnit().height(context, 220),
@@ -1102,7 +1103,7 @@ class _GradeState extends State<Grade> {
           ),
         );
 
-      case "state":
+      case "State":
         return SizedBox(
           width: ResponsiveUnit().width(context, 1260),
           height: ResponsiveUnit().height(context, 220),
@@ -1180,7 +1181,8 @@ class _GradeState extends State<Grade> {
           ),
         );
 
-      case "ib":
+      case "IB":
+        // todo: ib grading
         return SizedBox();
 
       case "A - Levels":
@@ -1760,29 +1762,6 @@ class _EssayState extends State<Essay> {
                   portfolio["essay"] = essay;
 
                   Navigator.pushNamed(context, '/onboarding/extra-curricular', arguments: portfolio);
-
-                  // PortfolioApi().insertPortfolio(
-                  //     Portfolio(
-                  //       Auth().getUserId() as String,
-                  //       portfolio["boardOfEdInTenth"] as String,
-                  //       portfolio["boardOfEdInTwelfth"] as String,
-                  //       portfolio["gradeInTenth"] as String,
-                  //       portfolio["gradeInTwelfth"] as String,
-                  //       portfolio["scoreInSat"] as int,
-                  //       portfolio["scoreInAct"] as int,
-                  //       portfolio["essay"] as String,
-                  //       portfolio["passionProject"] as String,
-                  //       portfolio["sports"] as String,
-                  //       portfolio["awards"] as String
-                  //     )
-                  // ).then((_) {
-                  //   print("success");
-                  //
-                  //   // todo: take to dashboard
-                  //
-                  // }).catchError((e) {
-                  //   print(e);
-                  // });
                 }
               },
               child: Container(
@@ -2011,16 +1990,31 @@ class _ExtraCurricularState extends State<ExtraCurricular> {
             ),
 
             InkWell(
-              onTap: () {
+              onTap: () async {
 
                 portfolio["passionProject"] = passionProject;
                 portfolio["sports"] = sports;
                 portfolio["awards"] = "$awardsFirst \n $awardsSecond \n $awardsThird";
+                
+                String prompt =
+                    "I want you to judge a common app essay based on the prompt on a scale of 1 to 5 where 1 is least and 5 is best. You can rate in spaces of 0.5 that means you can rate an essay as 2 or 2.5 or 3.5 but not as 2.2\n"
+                    "I want you to look at the following parameters and judge the essay based on only these. Rate the essay on these parameters on a scale of 1 to 5 and the final rating should be an average of all these parameters. The final rating should be in between 1 to 5\n"
+                    "The parameters are: - went into detail about their experiences \n - used writing techniques to SHOW and not TELL, for example not using 'working in a lab' but 'spraying a thin platinum film over pieces of copper' \n"
+                    "- all the paragraphs and experiences should be related to one common guiding thread through out \n - tells how their experiences will form future actions \n - initial attention grabbing sentence or paragraph \n"
+                    "- use of a good precise language which also feels creative, for example use of clear verbs, figures of speeches and so on \n - there should be a straight forward chronology \n - shows where it all started \n "
+                    "- not too many sentences in a paragraph, limit to 5-6 maximum \n - the essay starts with tension or an event and then fills the details later \n - no grammatical error, use of transition words and clear flow \n"
+                    "- word choices and originality \n"
+                    "All these parameters have a fairly equal weightage, you can tweak these a bit as per the essay. \n"
+                    "You have to output ONLY the final rating and nothing else. Just a number \n"
+                    "Here is the essay you have to judge based on the prompt \n"
+                    "Prompt: Write a nearly 650-worded letter on a topic of your choice"
+                    "Essay: ${portfolio["essay"] as String}";
 
-                // todo: essay edge functions
+                String essayScore = await GeminiApi().getEssayRating(prompt);
 
                 /// temp
-                portfolio["essay"] = 5;
+                portfolio["essay"] = essayScore;
+                print(essayScore);
 
                 PortfolioApi().insertPortfolio(
                     Portfolio(
@@ -2031,8 +2025,8 @@ class _ExtraCurricularState extends State<ExtraCurricular> {
                       portfolio["gradeInTwelfth"] as String,
                       portfolio["scoreInSat"] as int,
                       portfolio["scoreInAct"] as int,
-                      portfolio["essay"] as double,
-                      portfolio["passionProject"] as String,
+                      portfolio["essay_score"] as String,
+                      portfolio["passion_project"] as String,
                       portfolio["sports"] as String,
                       portfolio["awards"] as String
                     )
@@ -2135,7 +2129,7 @@ class _ExtraCurricularState extends State<ExtraCurricular> {
                                 color: _secondaryColour
                             ),
                             border: InputBorder.none,
-                            hintMaxLines: null,
+                            hintMaxLines: 3,
                         ),
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
