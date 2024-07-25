@@ -28,5 +28,5 @@ class GeminiApi {
     });
   }
 
-// todo: safety reach list
+
 }

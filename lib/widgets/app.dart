@@ -1,7 +1,8 @@
 import 'package:beacon/dashboard/home.dart';
-import 'package:beacon/model/auth.dart';
+import 'package:beacon/api/auth.dart';
 import 'package:beacon/widgets/onboarding.dart';
 import 'package:beacon/widgets/responsive_unit.dart';
+import 'package:beacon/widgets/splash_screens.dart';
 import 'package:beacon/widgets/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -21,14 +22,14 @@ class BeaconApp extends StatelessWidget {
         '/onboarding/grade' : (context) => const Grade(),
         '/onboarding/comp-exam' : (context) => const CompExam(),
         '/onboarding/essay' : (context) => const Essay(),
-        '/onboarding/extra-curricular' : (context) => const ExtraCurricular()
+        '/onboarding/extra-curricular' : (context) => const ExtraCurricular(),
+        '/loading-universities-college-list' : (context) => const UniversitiesPromptSplashScreen()
       },
       home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if(snapshot.hasData) {
-              // return const Home();
-              return const Onboarding();
+              return const Home();
             }
             else {
               return const LandingPage();
@@ -64,6 +65,7 @@ class LandingPage extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     // todo: link to auth then if dashboard exists, take to dashboard
+                    // todo: build a backend script to get user universities
                   },
                   child: Container(
                       width: ResponsiveUnit().width(context, 175),

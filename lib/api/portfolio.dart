@@ -17,11 +17,17 @@ class PortfolioApi {
         'grade_in_twelfth' : portfolio.gradeInTwelfth,
         'score_in_sat' : portfolio.scoreInSat,
         'score_in_act' : portfolio.scoreInAct,
-        'essay' : portfolio.essay,
+        'essay_score' : portfolio.essayScore,
         'passion_project' : portfolio.passionProject,
         'sports' : portfolio.sports,
         'awards' : portfolio.awards
       }
     );
   }
+
+  /// todo: edit parts of portfolio
+
+  /// todo: delete option
+
+
 }
