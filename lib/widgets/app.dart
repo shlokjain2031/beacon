@@ -23,7 +23,7 @@ class BeaconApp extends StatelessWidget {
         '/onboarding/comp-exam' : (context) => const CompExam(),
         '/onboarding/essay' : (context) => const Essay(),
         '/onboarding/extra-curricular' : (context) => const ExtraCurricular(),
-        '/loading-universities-college-list' : (context) => const UniversitiesPromptSplashScreen()
+        '/loading-universities-safety-reach-list' : (context) => const UniversitiesPromptSplashScreen()
       },
       home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
@@ -32,7 +32,7 @@ class BeaconApp extends StatelessWidget {
               return const Home();
             }
             else {
-              return const LandingPage();
+              return const UniversitiesPromptSplashScreen();
             }
           }
       ),
