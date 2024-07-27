@@ -7,8 +7,8 @@ class PortfolioApi {
 
   final supabase = Supabase.instance.client;
 
-  Future<PostgrestFilterBuilder> insertPortfolio(Portfolio portfolio) async {
-    return await supabase.from('portfolios').insert(
+  insertPortfolio(Portfolio portfolio) async {
+    await supabase.from('portfolios').insert(
       {
         'user_id' : portfolio.userId,
         'board_of_education_in_tenth' : portfolio.boardOfEdInTenth,
@@ -25,9 +25,5 @@ class PortfolioApi {
     );
   }
 
-  /// todo: edit parts of portfolio
-
-  /// todo: delete option
-
-
+  Future<PostgrestList> get portfolio async => await supabase.from('portfolios').select().eq('user_id', Auth().userId as String);
 }

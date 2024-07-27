@@ -1,3 +1,4 @@
+import 'package:beacon/api/portfolio.dart';
 import 'package:beacon/dashboard/home.dart';
 import 'package:beacon/api/auth.dart';
 import 'package:beacon/widgets/onboarding.dart';
@@ -29,14 +30,31 @@ class BeaconApp extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if(snapshot.hasData) {
-              return const Home();
+              return _portfolioChecker();
             }
             else {
-              return const UniversitiesPromptSplashScreen();
+              return const LandingPage();
             }
           }
       ),
     );
+  }
+}
+
+Widget _portfolioChecker() {
+  bool doesPortfolioExist = false;
+
+  PortfolioApi().portfolio.then((portfolio) {
+    if(portfolio.isNotEmpty) {
+      doesPortfolioExist = true;
+    }
+  });
+
+  if(doesPortfolioExist) {
+    return const Home();
+  }
+  else {
+    return const Onboarding();
   }
 }
 
