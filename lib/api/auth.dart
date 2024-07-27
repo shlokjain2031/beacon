@@ -28,7 +28,5 @@ class Auth {
     return await supabase.from('users').insert({ 'user_id' : id, 'name' : name });
   }
 
-  String? getUserId() {
-    return FirebaseAuth.instance.currentUser?.uid;
-  }
+  String? get userId => FirebaseAuth.instance.currentUser?.uid;
 }

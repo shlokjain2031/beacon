@@ -9,8 +9,6 @@ async function startServer() {
             await serve(async (req) => {
                 // dotenv.config();
 
-                console.log("hello");
-
                 const API_KEY = "AIzaSyDcrVA7mDq4EKZSccbEEEWXaO8SpLjlnog";
 
                 const { essayPrompt } = await req.json()

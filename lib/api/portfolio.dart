@@ -1,13 +1,13 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../model/portfolio.dart';
+import 'auth.dart';
 
 class PortfolioApi {
 
   final supabase = Supabase.instance.client;
 
   Future<PostgrestFilterBuilder> insertPortfolio(Portfolio portfolio) async {
-
     return await supabase.from('portfolios').insert(
       {
         'user_id' : portfolio.userId,

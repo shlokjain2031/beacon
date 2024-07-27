@@ -1997,8 +1997,6 @@ class _ExtraCurricularState extends State<ExtraCurricular> {
                 portfolio["sports"] = sports;
                 portfolio["awards"] = "$awardsFirst \n $awardsSecond \n $awardsThird";
 
-                /// todo: check essay for double quotes, remove them
-
                 String prompt = "${BeaconLocalistions().essayPrompt} \n Essay: ${portfolio["essay"] as String}";
 
                 String essayScore = await GeminiApi().getEssayRating(prompt);
@@ -2007,7 +2005,7 @@ class _ExtraCurricularState extends State<ExtraCurricular> {
 
                 PortfolioApi().insertPortfolio(
                     Portfolio(
-                      Auth().getUserId() as String,
+                      Auth().userId as String,
                       portfolio["boardOfEdInTenth"] as String,
                       portfolio["boardOfEdInTwelfth"] as String,
                       portfolio["gradeInTenth"] as String,
@@ -2020,11 +2018,7 @@ class _ExtraCurricularState extends State<ExtraCurricular> {
                       portfolio["awards"] as String
                     )
                 ).then((_) {
-
-                  // todo: get the prompt in json (work this in edge functions)
-                  // todo: put it in the db
-
-                  Navigator.pushNamed(context, '/loading-universities-college-list');
+                  Navigator.pushNamed(context, '/loading-universities-safety-reach-list');
                 }).catchError((e) {
                   print(e);
                 });
