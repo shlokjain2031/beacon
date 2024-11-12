@@ -48,8 +48,9 @@ class GeminiApi {
       }
     ).then((response) {
       Map<dynamic, dynamic> mapResponse = Map.from(response.data);
+      Map<dynamic, dynamic> safetyReachList = Map.from(mapResponse);
 
-      return mapResponse["safetyReachList"];
+      return safetyReachList;
     });
   }
 }
